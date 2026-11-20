@@ -1,0 +1,665 @@
+[
+  {
+    "id": 1294,
+    "representing_category": {
+      "id": 40,
+      "name_he": "אופני שיכוך מלא",
+      "name_en": "Full suspension",
+      "path_he": [
+        "אופניים",
+        "אופני הרים",
+        "אופני שיכוך מלא"
+      ]
+    },
+    "name": "IBIS RIPLEY AF SRAM 2022",
+    "brand": "IBIS",
+    "url": "https://slalumpardeshana.co.il/product/ibis-ripley-af-sram-2022/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 18900.0,
+      "sale": null
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "specs": {
+      "frame": "Aluminum, dual eccentric dw-link, tapered head tube, Boost148 & G2",
+      "fork": "Fox Float 34 Performance Series 130mm, 29”, 110×15",
+      "rear_shock": "Fox Performance Series Float DPS with EVOL, 190mm x 45mm",
+      "drivetrain": "SRAM NX/GX 1X12",
+      "brakes": "SRAM G2 R",
+      "seatpost": "KS Rage-i Dropper",
+      "wheels": "BLK BRD SEND Asym. 35mm"
+    },
+    "description_he": "הדור הרביעי של אופני Ibis Ripley LS, מציג לראשונה שלדה חדשה מאלומיניום, זהה בתכונותיה לשלדת הקרבון ובחבילה אטרקטיבית במיוחד. גאומטריה שמאפשרת טיסה גם בעליות וגם בירידות בלי לוותר על שליטה, יציבות והרגשת ביטחון.\nעם מתלה DW-Link המוכח, המשאיר את הצמיגים דבוקים לאדמה כך שכל דיווש מזניק את האופניים קדימה.\n \nמפרט טכני:\nשלדה: Aluminum, dual eccentric dw-link, tapered head tube, Boost148 & G2\nבולם קדמי: Fox Float 34 Performance Series 130mm, 29”, 110×15\nבולם אחורי: Fox Performance Series Float DPS with EVOL, 190mm x 45mm\nמערכת הילוכים: SRAM NX/GX 1X12\nברקסים: SRAM G2 R\nמוט כסא: KS Rage-i Dropper\nגלגלים: BLK BRD SEND Asym. 35mm",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_ngx_2022.jpg",
+        "local": "images/products/1294-0.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_ngx_2022_7.jpg",
+        "local": "images/products/1294-1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_ngx_2022_6.jpg",
+        "local": "images/products/1294-2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_ngx_2022_5.jpg",
+        "local": "images/products/1294-3.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_ngx_2022_4.jpg",
+        "local": "images/products/1294-4.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_ngx_2022_3.jpg",
+        "local": "images/products/1294-5.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_ngx_2022_2.jpg",
+        "local": "images/products/1294-6.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_ngx_blk_brd_1_2022-1.jpg",
+        "local": "images/products/1294-7.jpg",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1462,
+    "representing_category": {
+      "id": 41,
+      "name_he": "אופני זנב קשיח",
+      "name_en": "Hardtail",
+      "path_he": [
+        "אופניים",
+        "אופני הרים",
+        "אופני זנב קשיח"
+      ]
+    },
+    "name": "PINEWOOD ROGUE TRAIL 3",
+    "brand": "PINEWOOD",
+    "url": "https://slalumpardeshana.co.il/product/pinewood-rogue-trail-3/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 3250.0,
+      "sale": 2800.0
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אופני הרים",
+      "אופני זנב קשיח",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "specs": {
+      "frame": "29 MTB ALLOY BIKES",
+      "crank": "PROWHEEL 36T",
+      "brakes": "SHIMANO MT-200",
+      "fork": "SR XCM LOCK-OUT SUSPENSION FORK",
+      "drivetrain": "SHIMANO DEORE 1X12",
+      "wheel_size": "29\""
+    },
+    "description_he": "מפרט טכני:\nשלדה: 29 MTB ALLOY BIKES\nקראנק: PROWHEEL 36T\nברקסים: SHIMANO MT-200\nבולם קדמי: SR XCM LOCK-OUT SUSPENSION FORK\nהילוכים: SHIMANO DEORE 1X12\nמידת גלגל: 29\"",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/pinewood_rogue_3_2022_1.jpg",
+        "local": "images/products/1462-0.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/pinewood_rogue_3_2022_5.jpg",
+        "local": "images/products/1462-1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/pinewood_rogue_3_2022_4.jpg",
+        "local": "images/products/1462-2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/pinewood_rogue_3_2022_3.jpg",
+        "local": "images/products/1462-3.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/pinewood_rogue_3_2022_2.jpg",
+        "local": "images/products/1462-4.jpg",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1186,
+    "representing_category": {
+      "id": 23,
+      "name_he": "חשמלי",
+      "name_en": "Electric (e-MTB)",
+      "path_he": [
+        "אופניים",
+        "חשמלי"
+      ]
+    },
+    "name": "Bianchi E-Omnia FX XT",
+    "brand": "BIANCHI",
+    "url": "https://slalumpardeshana.co.il/product/bianchi-e-omnia-fx-xt/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 25990.0,
+      "sale": 22990.0
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אופניים",
+      "חשמלי"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "specs": {
+      "suspension": "Full suspension, 150mm travel",
+      "wheel_size": "29\"",
+      "motor": "Bosch Performance Line CX (Gen 4), 250W, 85Nm",
+      "battery": "625Wh",
+      "extras": "Integrated lights, internal cable routing"
+    },
+    "description_he": "עכשיו אתם יכולים לחרוש את השבילים האהובים עליכם אפילו יותר!\nאופני ה\ne-Omnia FX Type\nהם אופני ההרים עם היכולות הכי מטורפות בקטגוריית ה\ne-Omnia\n.\nהם מעוצבים לרוכבים מקצועיים שמתים על קריעת שבילים ומחפשים את הכיף ברכיבה בכל פעם מחדש.\nשלדה בשיכוך מלא, מהלך 150 מ\"מ וגלגלי \"29 הופכים את דגם ה\nFX-Type\nלמושלם להרפתקאות, עם כל מה שכלול בהן!  ועם בטרייה עוצמתית, הכיף מתמשך ליותר זמן!\nהשלדה של ה\nFX Type\nנבנתה עבור גלגלי ה29 והשיכוך המלא. זרוע הנדנדה הא-סימטרית מונעת נזק לצ'יינסטיי וקולות מוזרים ומעצבנים העלולים לקרות כשהשרשרת מכה בשלדה.\nלשלדה יש מראה חלק ומעוצב, הודות לגימור מיוחד בטכנולוגית\nGravity-Cast\nוניתוב הכבלים הפנימי שלה. מגני הבוץ שולבו בשלדה עצמה בכמה מקומות, כדי שלא תצטרכו לדאוג לגבי אותם שבילים בוציים.\nמנוע\nBosch Performance Lince CX\nעם 250 וואט ו-85 מטרי-ניוטון הוא מנוע עוצמתי בשביל הרכיבות המאתגרות יותר. 4 שלבי העזר שלו: חסכון בחשמל, סיור, אופני הרים חשמליים וטורבו מציעים מגוון רחב יותר של סגנונות רכיבה.  בטריית ה-625 קילוואט של המנוע נטענת עד חצייה בכשעתיים, ובמלואה בכחמש שעות.\nלא משנה איזה אופציה אתם בוחרים, סדרת ה-\nFX\nמציעה מספיק (ואף יותר!) בכדי לעזור לכם לטפס את העלייה הכי חדה, כמו גם בטרייה חזקה מספיק בשביל להשאיר אתכם על השביל מהזריחה עד השקיעה.\nהחשמלי הכי יפה בשטח מבית ביאנקי איטליה כובש את ישראל בסערה!\nמנוע Bosch Performance Line CX דור 4 עוצמתי שגורם לעליות להיראות כמו ירידות עם סוללה אדירה בנפח 625AH\nעיצוב חכם עם פנסים מובנים ושילדה א-סימטרית לרכיבה סופר נוחה בכל שביל והרפתקאה\nמערכת שימאנו XT ובולמי FOX 160 מ\"מ משלימים את האופניים והופכים אותם למשתלמים ביותר בארץ!",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/bianchi_omnia_xt.jpg",
+        "local": "images/products/1186-0.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/bianchi_omnia_xt_2.jpg",
+        "local": "images/products/1186-1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/bianchi_omnia_xt_3.jpg",
+        "local": "images/products/1186-2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/bianchi_omnia_xt_4-1.jpg",
+        "local": "images/products/1186-3.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/bianchi_omnia_xt_5.jpg",
+        "local": "images/products/1186-4.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/bianchi_omnia_xt_6.jpg",
+        "local": "images/products/1186-5.jpg",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1720,
+    "representing_category": {
+      "id": 22,
+      "name_he": "אופני ילדים",
+      "name_en": "Kids",
+      "path_he": [
+        "אופניים",
+        "אופני ילדים"
+      ]
+    },
+    "name": "CLEARY MEERKAT 24",
+    "brand": "CLEARY",
+    "url": "https://slalumpardeshana.co.il/product/cleary-meerkat-24/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 1890.0,
+      "sale": null
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "specs": {
+      "frame": "Lightweight 1020 alloy steel frame & fork",
+      "brakes": "Tektro junior v-brakes & brake levers",
+      "fork": "קשיח",
+      "drivetrain": "גיר הילוכים פנימי Sturmey Archer RX-RK5",
+      "wheel_size": "24 אינץ'"
+    },
+    "description_he": "אופני ילדים 24\" עם מערכת הילוכים \"פלנטרית\" Sturmey Archer RX-RK5, מובנת לתוך הלב של הגלגל האחורי. יתרונות של מערכת \"פלנטרית\" לעומת תערכת הילוכים רגילה: עטימות למים, עמידות למקות ונפילות טובה יותר…\nמפרט טכני\n:\nשילדה: Lightweight 1020 alloy steel frame & fork\nבלמים: Tektro junior v-brakes & brake levers\nמזלג קדמי: קשיח\nהילוכים: גיר הילוכים פנימי Sturmey Archer RX-RK5\nגודל גלגל: 24 אינץ'",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/09/cleary_merkaat_24_01.jpg",
+        "local": "images/products/1720-0.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/09/cleary_merkaat_24_04.jpg",
+        "local": "images/products/1720-1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/09/cleary_merkaat_24_03.jpg",
+        "local": "images/products/1720-2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/09/cleary_merkaat_24_02.jpg",
+        "local": "images/products/1720-3.jpg",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1449,
+    "representing_category": {
+      "id": 28,
+      "name_he": "בי אם אקס",
+      "name_en": "BMX",
+      "path_he": [
+        "אופניים",
+        "אופני ילדים",
+        "בי אם אקס"
+      ]
+    },
+    "name": "RAINBOW BAZZ 18 R-1.0",
+    "brand": "RAINBOW",
+    "url": "https://slalumpardeshana.co.il/product/rainbow-bazz-18-r-1-0/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 910.0,
+      "sale": null
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים",
+      "בי אם אקס"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "specs": {
+      "frame": "Aluminum",
+      "brakes": "V-brakes",
+      "drivetrain": "Single speed",
+      "wheel_size": "18\""
+    },
+    "description_he": "אופני ילדים BMX 18 אינץ'\nשלדת אלומיניום\nהילוכים N/A\nברקסים V\nמידת גלגל 18",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/rainbow_bazz_18_1.jpg",
+        "local": "images/products/1449-0.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/rainbow_bazz_18_5.jpg",
+        "local": "images/products/1449-1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/rainbow_bazz_18_4.jpg",
+        "local": "images/products/1449-2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/rainbow_bazz_18_3.jpg",
+        "local": "images/products/1449-3.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/rainbow_bazz_18_2.jpg",
+        "local": "images/products/1449-4.jpg",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1391,
+    "representing_category": {
+      "id": 29,
+      "name_he": "דחיפה",
+      "name_en": "Balance bikes",
+      "path_he": [
+        "אופניים",
+        "אופני ילדים",
+        "דחיפה"
+      ]
+    },
+    "name": "אופני איזון JDBUG TC04",
+    "brand": "JDBUG",
+    "url": "https://slalumpardeshana.co.il/product/אופני-איזון-jdbug-tc04/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 419.0,
+      "sale": null
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים",
+      "דחיפה"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "specs": {
+      "frame": "Aluminum",
+      "weight": "3.35 kg",
+      "wheel_size": "12\" pneumatic",
+      "brakes": "Rear brake",
+      "age": "2.5-4",
+      "max_rider_weight": "30 kg"
+    },
+    "description_he": "אופני האיזון הטובים והחזקים ביותר בארץ!\nשלדת אלומיניום קלילה במשקל אופניים כולל של 3.35 ק\"ג בלבד!\nגלגלי \"12 מתנפחים לאחיזה מושלמת בקרקע וברקס אחורי ייחודי ואיכותי\nמיועד לגילאי 2.5-4 ובמשקל מקסימלי לרוכב 30 ק\"ג",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/jdbug_tc04_blue-3.jpg",
+        "local": "images/products/1391-0.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/jdbug_tc04_red.jpg",
+        "local": "images/products/1391-1.jpg",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1682,
+    "representing_category": {
+      "id": 24,
+      "name_he": "אופני עיר",
+      "name_en": "City",
+      "path_he": [
+        "אופניים",
+        "אופני עיר"
+      ]
+    },
+    "name": "JAMIS HUDSON 2022-23",
+    "brand": "JAMIS",
+    "url": "https://slalumpardeshana.co.il/product/jamis-hudson-2022-23/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 2400.0,
+      "sale": null
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אופני עיר",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "specs": {
+      "frame": "Aluminum, step-through",
+      "wheel_size": "27.5\" wide city tyres, double-wall rims"
+    },
+    "description_he": "אופני עיר קלאסיים לרכיבה הנוחה ביותר .\nשילדת אלומיניום במבנה מיוחד המאפשר הגעה עם הרגליים לרצפה בתנוחת הרכיבה הנכונה!\nאוכף מפנק וכידון גבוה לתנוחת גב ארגונימית ונעימה לרכיבה.\nגלגלים עם חישוק כפול וצמיגי עיר \"27.5 רחבים לרכיבה ללא מהמורות.",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/04/jamis_hudson_1.png",
+        "local": "images/products/1682-0.png",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/04/jamis_hudson_5.png",
+        "local": "images/products/1682-1.png",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/04/jamis_hudson_4.png",
+        "local": "images/products/1682-2.png",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/04/jamis_hudson_3.png",
+        "local": "images/products/1682-3.png",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/04/jamis_hudson_2.png",
+        "local": "images/products/1682-4.png",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1557,
+    "representing_category": {
+      "id": 26,
+      "name_he": "נוחות",
+      "name_en": "Comfort",
+      "path_he": [
+        "אופניים",
+        "אופני עיר",
+        "נוחות"
+      ]
+    },
+    "name": "אופני עיר קלאסיות XDS SUNRISE",
+    "brand": "XDS",
+    "url": "https://slalumpardeshana.co.il/product/אופני-עיר-קלאסיות-xds-sunrise/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 2100.0,
+      "sale": 1890.0
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אופני נשים",
+      "אופני עיר",
+      "אופניים",
+      "נוחות"
+    ],
+    "tags_he": [],
+    "specs": {
+      "riding_position": "Upright"
+    },
+    "description_he": "אופניי עיר מושלמות, לקיבוץ לכפר ולישוב, תנוחת רכיבה מושלמת , עם גב זקוף.",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/sunrise_01.jpg",
+        "local": "images/products/1557-0.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/sunrise_05.jpg",
+        "local": "images/products/1557-1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/sunrise_04.jpg",
+        "local": "images/products/1557-2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/sunrise_03.jpg",
+        "local": "images/products/1557-3.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/sunrise_02.jpg",
+        "local": "images/products/1557-4.jpg",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1693,
+    "representing_category": {
+      "id": 49,
+      "name_he": "אופני נשים",
+      "name_en": "Women's",
+      "path_he": [
+        "אופני נשים"
+      ]
+    },
+    "name": "MARIN 2023 SAN ANSELMO DS1",
+    "brand": "MARIN",
+    "url": "https://slalumpardeshana.co.il/product/marin-2023-san-anselmo-ds1/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 2200.0,
+      "sale": null
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אופני נשים",
+      "אופני עיר",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "specs": {
+      "frame": "Aluminum Series 2 (lifetime warranty), women's geometry",
+      "fork": "Suspension, 63mm",
+      "brakes": "Disc"
+    },
+    "description_he": "אופני עיר דו\n–\nשימושיים שמתאימים לעיר וגם לדרכי עפר בגיזרת נשים קלאסית\nשילדת אלומיניום\nSERIES 2\nקלה וחזקה עם אחריות לכל החיים\nבולם זעזועים\n63\nמ\n\"\nמ חזק ומפנק\nבלמי דיסק וגלגלים חזקים שמתאימים לתלאות העיר",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/05/san_anselmo_1.jpg",
+        "local": "images/products/1693-0.jpg",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1620,
+    "representing_category": {
+      "id": 48,
+      "name_he": "מיגון",
+      "name_en": "Protection",
+      "path_he": [
+        "אביזרים",
+        "מיגון"
+      ]
+    },
+    "name": "DAINESE RIVAL PRO VEST",
+    "brand": "DAINESE",
+    "url": "https://slalumpardeshana.co.il/product/dainese-rival-pro-vest/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 1500.0,
+      "sale": null
+    },
+    "in_stock": true,
+    "categories_he": [
+      "אביזרים",
+      "מיגון"
+    ],
+    "tags_he": [],
+    "specs": {},
+    "description_he": "אפוד אופניים מגן ונושם עם מערכת הידרציה של\nDainese\nפטנט חדשנית\n,\nבהשראת ה\n-MotoGP™.\nמאימון ועד כל רמות התחרות\n,\nאפוד זה מציע הגנה מקסימלית לשימוש באנדורו ובטרייל\n.\nהוא תוכנן לרוכבים האגרסיביים והתובעניים ביותר שפורצים את הגבולות בכל יציאה\n.\nטכנולוגיית\nPRO SHAPE 2.0\nבעלת השפעה גבוהה מבטיחה הגנה על הכתפיים בעוד שהקלילות והאוורור שלה מאפשרים חופש תנועה וביטחון מרבי לאורך כל הרכיבה\n.\nמגיני\nCrash Absorb Soft Memory Foam\nמכסים את הצלעות\n,\nעצמות הבריח ואת כל אזור הגב בדיוק אנטומי\n,\nומספקים תכונות בטיחות נוספות עם נוחות מקסימלית\n.\nעם המבנה המודולרי של\nRIVAL VEST PRO,\nהרוכבים יכולים להסיר את מגני הכתפיים והגב להתאמה נוחה גם כאשר הם לובשים תיק גב או נרתיק\n.\nמערכת ההידרציה הבלעדית של\nHumpBack™,\nהמעוצבת על פי טכנולוגיית\nDainese\nעבור רוכבי\nMotoGP™\nמקצועיים\n,\nמספקת מרחב קומפקטי לנפח המים הנכון\n,\nמאזנת בצורה מושלמת את מגן הגב ומציעה הגנה נוספת במקרה של נפילה\n.\nהרוכבים מתפקדים בצורה הטובה ביותר כאשר הם יכולים להתרכז בשביל\n,\nלא לדאוג לבטיחותם\n.",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/02/dainese_rival_pro_vest_1.jpg",
+        "local": "images/products/1620-0.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/02/dainese_rival_pro_vest_2.jpg",
+        "local": "images/products/1620-1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/02/dainese_rival_pro_vest_3.jpg",
+        "local": "images/products/1620-2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/02/dainese_rival_pro_vest_4.jpg",
+        "local": "images/products/1620-3.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/02/dainese_rival_pro_vest_5.jpg",
+        "local": "images/products/1620-4.jpg",
+        "alt": ""
+      }
+    ]
+  },
+  {
+    "id": 1702,
+    "representing_category": {
+      "id": 34,
+      "name_he": "יד שניה",
+      "name_en": "Used / second hand",
+      "path_he": [
+        "יד שניה"
+      ]
+    },
+    "name": "KONA TANUKI DL",
+    "brand": "KONA",
+    "url": "https://slalumpardeshana.co.il/product/kona-tanuki-dl/",
+    "sku": null,
+    "price": {
+      "currency": "ILS",
+      "regular": 2500.0,
+      "sale": null
+    },
+    "in_stock": true,
+    "categories_he": [
+      "יד שניה"
+    ],
+    "tags_he": [],
+    "specs": {
+      "suspension": "Full suspension",
+      "wheel_size": "26\"",
+      "frame_size": "18\"",
+      "condition": "Used"
+    },
+    "description_he": "אופני הרים שיכוך מלא\nגלגל 26\nמידה \"18",
+    "images": [
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/06/kona_tanuki_dl_1.jpg",
+        "local": "images/products/1702-0.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/06/kona_tanuki_dl_4.jpg",
+        "local": "images/products/1702-1.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/06/kona_tanuki_dl_3.jpg",
+        "local": "images/products/1702-2.jpg",
+        "alt": ""
+      },
+      {
+        "src": "https://slalumpardeshana.co.il/wp-content/uploads/2023/06/kona_tanuki_dl_2.jpg",
+        "local": "images/products/1702-3.jpg",
+        "alt": ""
+      }
+    ]
+  }
+]

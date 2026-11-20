@@ -1,0 +1,133 @@
+[
+  {
+    "id": 21,
+    "name_he": "אופניים",
+    "name_en": "Bikes",
+    "url": "https://slalumpardeshana.co.il/product-category/אופניים/",
+    "product_count": 39,
+    "representative_product_id": null,
+    "children": [
+      {
+        "id": 17,
+        "name_he": "אופני הרים",
+        "name_en": "Mountain bikes",
+        "url": "https://slalumpardeshana.co.il/product-category/אופניים/הרים/",
+        "product_count": 19,
+        "representative_product_id": null,
+        "children": [
+          {
+            "id": 40,
+            "name_he": "אופני שיכוך מלא",
+            "name_en": "Full suspension",
+            "url": "https://slalumpardeshana.co.il/product-category/אופניים/הרים/שיכוך-מלא/",
+            "product_count": 12,
+            "representative_product_id": 1294,
+            "children": []
+          },
+          {
+            "id": 41,
+            "name_he": "אופני זנב קשיח",
+            "name_en": "Hardtail",
+            "url": "https://slalumpardeshana.co.il/product-category/אופניים/הרים/זנב-קשיח/",
+            "product_count": 7,
+            "representative_product_id": 1462,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "name_he": "אופני ילדים",
+        "name_en": "Kids",
+        "url": "https://slalumpardeshana.co.il/product-category/אופניים/ילדים/",
+        "product_count": 11,
+        "representative_product_id": 1720,
+        "children": [
+          {
+            "id": 28,
+            "name_he": "בי אם אקס",
+            "name_en": "BMX",
+            "url": "https://slalumpardeshana.co.il/product-category/אופניים/ילדים/בי-אם-אקס/",
+            "product_count": 2,
+            "representative_product_id": 1449,
+            "children": []
+          },
+          {
+            "id": 29,
+            "name_he": "דחיפה",
+            "name_en": "Balance bikes",
+            "url": "https://slalumpardeshana.co.il/product-category/אופניים/ילדים/דחיפה/",
+            "product_count": 1,
+            "representative_product_id": 1391,
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "name_he": "חשמלי",
+        "name_en": "Electric (e-MTB)",
+        "url": "https://slalumpardeshana.co.il/product-category/אופניים/חשמלי/",
+        "product_count": 5,
+        "representative_product_id": 1186,
+        "children": []
+      },
+      {
+        "id": 24,
+        "name_he": "אופני עיר",
+        "name_en": "City",
+        "url": "https://slalumpardeshana.co.il/product-category/אופניים/עיר/",
+        "product_count": 5,
+        "representative_product_id": 1682,
+        "children": [
+          {
+            "id": 26,
+            "name_he": "נוחות",
+            "name_en": "Comfort",
+            "url": "https://slalumpardeshana.co.il/product-category/אופניים/עיר/נוחות/",
+            "product_count": 2,
+            "representative_product_id": 1557,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name_he": "יד שניה",
+    "name_en": "Used / second hand",
+    "url": "https://slalumpardeshana.co.il/product-category/יד-שניה/",
+    "product_count": 2,
+    "representative_product_id": 1702,
+    "children": []
+  },
+  {
+    "id": 46,
+    "name_he": "אביזרים",
+    "name_en": "Accessories",
+    "url": "https://slalumpardeshana.co.il/product-category/אביזרים/",
+    "product_count": 2,
+    "representative_product_id": null,
+    "children": [
+      {
+        "id": 48,
+        "name_he": "מיגון",
+        "name_en": "Protection",
+        "url": "https://slalumpardeshana.co.il/product-category/אביזרים/מיגון/",
+        "product_count": 2,
+        "representative_product_id": 1620,
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "name_he": "אופני נשים",
+    "name_en": "Women's",
+    "url": "https://slalumpardeshana.co.il/product-category/אופני-נשים/",
+    "product_count": 3,
+    "representative_product_id": 1693,
+    "children": []
+  }
+]

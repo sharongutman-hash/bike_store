@@ -1,0 +1,878 @@
+[
+  {
+    "id": 1727,
+    "name": "CLEARY MEERKAT 26",
+    "brand": "CLEARY",
+    "url": "https://slalumpardeshana.co.il/product/cleary-meerkat-26/",
+    "price": {
+      "currency": "ILS",
+      "regular": 1990.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני זנב קשיח",
+      "אופני ילדים",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/09/cleary_meerkat_26_0.jpg"
+  },
+  {
+    "id": 1720,
+    "name": "CLEARY MEERKAT 24",
+    "brand": "CLEARY",
+    "url": "https://slalumpardeshana.co.il/product/cleary-meerkat-24/",
+    "price": {
+      "currency": "ILS",
+      "regular": 1890.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "image_count": 4,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/09/cleary_merkaat_24_01.jpg"
+  },
+  {
+    "id": 1710,
+    "name": "CLEARY OWL 20",
+    "brand": "CLEARY",
+    "url": "https://slalumpardeshana.co.il/product/cleary-owl-20/",
+    "price": {
+      "currency": "ILS",
+      "regular": 990.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/09/cleary_owl_20_01.jpg"
+  },
+  {
+    "id": 1702,
+    "name": "KONA TANUKI DL",
+    "brand": "KONA",
+    "url": "https://slalumpardeshana.co.il/product/kona-tanuki-dl/",
+    "price": {
+      "currency": "ILS",
+      "regular": 2500.0,
+      "sale": null
+    },
+    "categories_he": [
+      "יד שניה"
+    ],
+    "tags_he": [],
+    "image_count": 4,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/06/kona_tanuki_dl_1.jpg"
+  },
+  {
+    "id": 1693,
+    "name": "MARIN 2023 SAN ANSELMO DS1",
+    "brand": "MARIN",
+    "url": "https://slalumpardeshana.co.il/product/marin-2023-san-anselmo-ds1/",
+    "price": {
+      "currency": "ILS",
+      "regular": 2200.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני נשים",
+      "אופני עיר",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/05/san_anselmo_1.jpg"
+  },
+  {
+    "id": 1690,
+    "name": "MARIN 2023 SAN RAFAEL DS1",
+    "brand": "MARIN",
+    "url": "https://slalumpardeshana.co.il/product/marin-2023-san-rafael-ds1/",
+    "price": {
+      "currency": "ILS",
+      "regular": 2200.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני עיר",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/05/san_rafael_1.jpg"
+  },
+  {
+    "id": 1682,
+    "name": "JAMIS HUDSON 2022-23",
+    "brand": "JAMIS",
+    "url": "https://slalumpardeshana.co.il/product/jamis-hudson-2022-23/",
+    "price": {
+      "currency": "ILS",
+      "regular": 2400.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני עיר",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/04/jamis_hudson_1.png"
+  },
+  {
+    "id": 1666,
+    "name": "PIVOT SHUTTLE AM",
+    "brand": "PIVOT",
+    "url": "https://slalumpardeshana.co.il/product/pivot-shuttle-am/",
+    "price": {
+      "currency": "ILS",
+      "regular": 39900.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופניים",
+      "חשמלי"
+    ],
+    "tags_he": [],
+    "image_count": 3,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/02/pivot_shuttle_am_1.jpg"
+  },
+  {
+    "id": 1647,
+    "name": "MOUSTACHE SAMEDI 29 TRAIL 5",
+    "brand": "MOUSTACHE",
+    "url": "https://slalumpardeshana.co.il/product/moustache-samedi-29-trail-5-2023/",
+    "price": {
+      "currency": "ILS",
+      "regular": 25990.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופניים",
+      "חשמלי"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/02/moustache_samedi_trail_5_1.jpg"
+  },
+  {
+    "id": 1620,
+    "name": "DAINESE RIVAL PRO VEST",
+    "brand": "DAINESE",
+    "url": "https://slalumpardeshana.co.il/product/dainese-rival-pro-vest/",
+    "price": {
+      "currency": "ILS",
+      "regular": 1500.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אביזרים",
+      "מיגון"
+    ],
+    "tags_he": [],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/02/dainese_rival_pro_vest_1.jpg"
+  },
+  {
+    "id": 1611,
+    "name": "DAINESE TRAIL SKINS PRO TEE",
+    "brand": "DAINESE",
+    "url": "https://slalumpardeshana.co.il/product/dainese-trail-skins-pro-tee/",
+    "price": {
+      "currency": "ILS",
+      "regular": 990.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אביזרים",
+      "מיגון"
+    ],
+    "tags_he": [],
+    "image_count": 3,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/02/dainese_tee_1.jpg"
+  },
+  {
+    "id": 1596,
+    "name": "PIVOT TRAIL 429 SLX/XT RACE",
+    "brand": "PIVOT",
+    "url": "https://slalumpardeshana.co.il/product/pivot-trail-429-slx-xt-race/",
+    "price": {
+      "currency": "ILS",
+      "regular": 23995.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "image_count": 3,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/01/pivot_trail_429_1.jpg"
+  },
+  {
+    "id": 1587,
+    "name": "PIVOT TRAIL 429 XO1 RACE",
+    "brand": "PIVOT",
+    "url": "https://slalumpardeshana.co.il/product/pivot-trail-429-xo1-race/",
+    "price": {
+      "currency": "ILS",
+      "regular": 25995.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [],
+    "image_count": 2,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2023/01/pivot_trail_429_2-1.jpg"
+  },
+  {
+    "id": 1557,
+    "name": "אופני עיר קלאסיות XDS SUNRISE",
+    "brand": "XDS",
+    "url": "https://slalumpardeshana.co.il/product/אופני-עיר-קלאסיות-xds-sunrise/",
+    "price": {
+      "currency": "ILS",
+      "regular": 2100.0,
+      "sale": 1890.0
+    },
+    "categories_he": [
+      "אופני נשים",
+      "אופני עיר",
+      "אופניים",
+      "נוחות"
+    ],
+    "tags_he": [],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/sunrise_01.jpg"
+  },
+  {
+    "id": 1469,
+    "name": "XDS HUNTER 29 2022",
+    "brand": "XDS",
+    "url": "https://slalumpardeshana.co.il/product/xds-hunter-29-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 2750.0,
+      "sale": 2400.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני זנב קשיח",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/xds_hunter_29_2022_1.jpg"
+  },
+  {
+    "id": 1462,
+    "name": "PINEWOOD ROGUE TRAIL 3",
+    "brand": "PINEWOOD",
+    "url": "https://slalumpardeshana.co.il/product/pinewood-rogue-trail-3/",
+    "price": {
+      "currency": "ILS",
+      "regular": 3250.0,
+      "sale": 2800.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני זנב קשיח",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/pinewood_rogue_3_2022_1.jpg"
+  },
+  {
+    "id": 1456,
+    "name": "אופני ילדים VISION BMX",
+    "brand": "VISION",
+    "url": "https://slalumpardeshana.co.il/product/אופני-ילדים-vision-bmx/",
+    "price": {
+      "currency": "ILS",
+      "regular": 550.0,
+      "sale": 450.0
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים",
+      "בי אם אקס"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/vision_bmx.jpg"
+  },
+  {
+    "id": 1449,
+    "name": "RAINBOW BAZZ 18 R-1.0",
+    "brand": "RAINBOW",
+    "url": "https://slalumpardeshana.co.il/product/rainbow-bazz-18-r-1-0/",
+    "price": {
+      "currency": "ILS",
+      "regular": 910.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים",
+      "בי אם אקס"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/rainbow_bazz_18_1.jpg"
+  },
+  {
+    "id": 1430,
+    "name": "REID VIPER 20 2022",
+    "brand": "REID",
+    "url": "https://slalumpardeshana.co.il/product/reid-scout-20-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 1350.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/reid_scout_20_pink_1.jpg"
+  },
+  {
+    "id": 1419,
+    "name": "BLACK GOAT DOMESTIC 20/24 2023",
+    "brand": "BLACK GOAT",
+    "url": "https://slalumpardeshana.co.il/product/black-goat-domestic-24/",
+    "price": {
+      "currency": "ILS",
+      "regular": 990.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2023"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/bg_24_red_1.jpg"
+  },
+  {
+    "id": 1406,
+    "name": "REID SCOUT 24 2022",
+    "brand": "REID",
+    "url": "https://slalumpardeshana.co.il/product/reid-scout-24-2/",
+    "price": {
+      "currency": "ILS",
+      "regular": 1350.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/reid_scout_24_orange_1.jpg"
+  },
+  {
+    "id": 1399,
+    "name": "REID SCOUT 24 2022",
+    "brand": "REID",
+    "url": "https://slalumpardeshana.co.il/product/reid-scout-24/",
+    "price": {
+      "currency": "ILS",
+      "regular": 1350.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/reid_scout_24_blue_1.jpg"
+  },
+  {
+    "id": 1391,
+    "name": "אופני איזון JDBUG TC04",
+    "brand": "JDBUG",
+    "url": "https://slalumpardeshana.co.il/product/אופני-איזון-jdbug-tc04/",
+    "price": {
+      "currency": "ILS",
+      "regular": 419.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים",
+      "דחיפה"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 2,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/jdbug_tc04_blue-3.jpg"
+  },
+  {
+    "id": 1379,
+    "name": "IBIS RIPMO AF SRAM 2022",
+    "brand": "IBIS",
+    "url": "https://slalumpardeshana.co.il/product/ibis-ripmo-af-sram-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 19600.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/ibis_ripmo_af_ngx_2022_1.jpg"
+  },
+  {
+    "id": 1360,
+    "name": "IBIS RIPLEY CARBON SHIMANO 2022",
+    "brand": "IBIS",
+    "url": "https://slalumpardeshana.co.il/product/ibis-ripley-carbon-shimano-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 24000.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 7,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/12/ibis_ripley_carbon_shm_2022_1.jpg"
+  },
+  {
+    "id": 1299,
+    "name": "IBIS RIPLEY AF SHIMANO 2022",
+    "brand": "IBIS",
+    "url": "https://slalumpardeshana.co.il/product/ibis-ripley-af-shimano-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 17900.0,
+      "sale": 14995.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_shm_2022.jpg"
+  },
+  {
+    "id": 1294,
+    "name": "IBIS RIPLEY AF SRAM 2022",
+    "brand": "IBIS",
+    "url": "https://slalumpardeshana.co.il/product/ibis-ripley-af-sram-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 18900.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 8,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/ibis_ripley_af_ngx_2022.jpg"
+  },
+  {
+    "id": 1289,
+    "name": "GIANT LIV EMBOLDEN 2 29/27.5 2022",
+    "brand": "GIANT",
+    "url": "https://slalumpardeshana.co.il/product/giant-liv-embolden-2-29-27-5-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 9998.0,
+      "sale": 8798.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/giant_liv_embolden_2_2022.jpg"
+  },
+  {
+    "id": 1285,
+    "name": "GIANT TRANCE 2 29 2022",
+    "brand": "GIANT",
+    "url": "https://slalumpardeshana.co.il/product/giant-trance-2-29-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 14770.0,
+      "sale": 12998.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/giant_trance_2_2022.jpg"
+  },
+  {
+    "id": 1278,
+    "name": "GIANT STANCE 1 29 2022",
+    "brand": "GIANT",
+    "url": "https://slalumpardeshana.co.il/product/giant-stance-1-29-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 12498.0,
+      "sale": 9889.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/giant_stance_1_2022.jpg"
+  },
+  {
+    "id": 1266,
+    "name": "GIANT STANCE 2 29 2021",
+    "brand": "GIANT",
+    "url": "https://slalumpardeshana.co.il/product/giant-stance-2-29-2021/",
+    "price": {
+      "currency": "ILS",
+      "regular": 9998.0,
+      "sale": 6998.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2021"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/giant_stance_2_2021_1.jpg"
+  },
+  {
+    "id": 1240,
+    "name": "POLIGON CASCADE 3 2022",
+    "brand": "POLYGON",
+    "url": "https://slalumpardeshana.co.il/product/poligon-cascade-3-2022/",
+    "price": {
+      "currency": "ILS",
+      "regular": 1850.0,
+      "sale": 1690.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני זנב קשיח",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/plg_cascade_3_2022_1.jpg"
+  },
+  {
+    "id": 1227,
+    "name": "MOUSTACHE Samedi 29 Game 4",
+    "brand": "MOUSTACHE",
+    "url": "https://slalumpardeshana.co.il/product/moustache-samedi-29-game-4/",
+    "price": {
+      "currency": "ILS",
+      "regular": 23900.0,
+      "sale": 21900.0
+    },
+    "categories_he": [
+      "אופניים",
+      "חשמלי"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/samedi_29_game_4_1.jpg"
+  },
+  {
+    "id": 1218,
+    "name": "MOUSTACHE Samedi 29 Trail 4",
+    "brand": "MOUSTACHE",
+    "url": "https://slalumpardeshana.co.il/product/moustache-samedi-29-trail-4/",
+    "price": {
+      "currency": "ILS",
+      "regular": 23900.0,
+      "sale": 21900.0
+    },
+    "categories_he": [
+      "אופניים",
+      "חשמלי"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/samedi_29_trail_4_1.jpg"
+  },
+  {
+    "id": 1186,
+    "name": "Bianchi E-Omnia FX XT",
+    "brand": "BIANCHI",
+    "url": "https://slalumpardeshana.co.il/product/bianchi-e-omnia-fx-xt/",
+    "price": {
+      "currency": "ILS",
+      "regular": 25990.0,
+      "sale": 22990.0
+    },
+    "categories_he": [
+      "אופניים",
+      "חשמלי"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 6,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/bianchi_omnia_xt.jpg"
+  },
+  {
+    "id": 1180,
+    "name": "XDS FLASH 29",
+    "brand": "XDS",
+    "url": "https://slalumpardeshana.co.il/product/xds-flash-29/",
+    "price": {
+      "currency": "ILS",
+      "regular": 3600.0,
+      "sale": 3250.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני זנב קשיח",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/xds_flash_29.jpg"
+  },
+  {
+    "id": 257,
+    "name": "GIANT TRANCE 2021",
+    "brand": "GIANT",
+    "url": "https://slalumpardeshana.co.il/product/devy-adv-2/",
+    "price": {
+      "currency": "ILS",
+      "regular": 16000.0,
+      "sale": null
+    },
+    "categories_he": [
+      "יד שניה"
+    ],
+    "tags_he": [],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/IMG_20221124_154224_247.jpg"
+  },
+  {
+    "id": 251,
+    "name": "אופני עיר קלאסיות BLACK GOAT City 7",
+    "brand": "BLACK GOAT",
+    "url": "https://slalumpardeshana.co.il/product/liv-avail/",
+    "price": {
+      "currency": "ILS",
+      "regular": 1950.0,
+      "sale": 1499.0
+    },
+    "categories_he": [
+      "אופני נשים",
+      "אופני עיר",
+      "אופניים",
+      "נוחות"
+    ],
+    "tags_he": [],
+    "image_count": 3,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/bg_city_7_01.jpg"
+  },
+  {
+    "id": 249,
+    "name": "POLYGON D7 2022",
+    "brand": "POLYGON",
+    "url": "https://slalumpardeshana.co.il/product/liv-avow/",
+    "price": {
+      "currency": "ILS",
+      "regular": 8200.0,
+      "sale": 7390.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/plg_d7_2022_01.jpg"
+  },
+  {
+    "id": 231,
+    "name": "GT SENSOR SPORT 29 2021",
+    "brand": "GT",
+    "url": "https://slalumpardeshana.co.il/product/giant-leviathan-x6/",
+    "price": {
+      "currency": "ILS",
+      "regular": 12488.0,
+      "sale": 7998.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני שיכוך מלא",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2021"
+    ],
+    "image_count": 2,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/gt_sensor_2021.jpg"
+  },
+  {
+    "id": 230,
+    "name": "XDS CRONUS RHINO 29",
+    "brand": "XDS",
+    "url": "https://slalumpardeshana.co.il/product/giant-leviathan-x5/",
+    "price": {
+      "currency": "ILS",
+      "regular": 3490.0,
+      "sale": 3100.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני זנב קשיח",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/xds_cronus_29.jpg"
+  },
+  {
+    "id": 228,
+    "name": "XDS CHAMP 29",
+    "brand": "XDS",
+    "url": "https://slalumpardeshana.co.il/product/giant-leviathan-x4/",
+    "price": {
+      "currency": "ILS",
+      "regular": 2900.0,
+      "sale": 2500.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני זנב קשיח",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/xds_champ_29.jpg"
+  },
+  {
+    "id": 192,
+    "name": "REID MTB PRO 2022",
+    "brand": "REID",
+    "url": "https://slalumpardeshana.co.il/product/giant-leviathan-x3/",
+    "price": {
+      "currency": "ILS",
+      "regular": 1950.0,
+      "sale": null
+    },
+    "categories_he": [
+      "אופני ילדים",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 5,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2021/10/reid_mtb_pro_1.jpg"
+  },
+  {
+    "id": 189,
+    "name": "XDS HACKER 500 29",
+    "brand": "XDS",
+    "url": "https://slalumpardeshana.co.il/product/2/",
+    "price": {
+      "currency": "ILS",
+      "regular": 2750.0,
+      "sale": 2400.0
+    },
+    "categories_he": [
+      "אופני הרים",
+      "אופני זנב קשיח",
+      "אופניים"
+    ],
+    "tags_he": [
+      "שנתון 2022"
+    ],
+    "image_count": 1,
+    "main_image": "https://slalumpardeshana.co.il/wp-content/uploads/2021/10/hacker_500_29.jpg"
+  }
+]

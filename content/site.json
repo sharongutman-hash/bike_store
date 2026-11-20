@@ -1,0 +1,262 @@
+{
+  "source": "https://slalumpardeshana.co.il/",
+  "scraped_on": "2026-11-20",
+  "business": {
+    "name_he": "סלאלום פרדס חנה",
+    "name_en": "Slalom Pardes Hanna",
+    "tagline_he": "הכל לאופניים במקום אחד",
+    "slogans_he": [
+      "אופניים, אביזרים, חברים",
+      "סלאלום - הבית של האופניים שלך בפרדס חנה",
+      "אופניים, שרות, אביזרים וחברים — אלו לא רק מילים אלא תפיסת עולם."
+    ],
+    "owner_mention_he": "אלמוג והצוות חזרו ואיתם תחושת הבית החם."
+  },
+  "contact": {
+    "phone": "04-6288992",
+    "mobile": "052-5660619",
+    "whatsapp": "https://wa.me/972525660619",
+    "email": "slalumph@gmail.com",
+    "address_he": "רחוב השקמה 8, פרדס חנה כרכור",
+    "facebook": "https://www.facebook.com/slalom.pardes.hanna",
+    "map_query_he": "אפניי סלאלום פרדס חנה"
+  },
+  "opening_hours_he": [
+    {
+      "days": "א, ב, ד, ה",
+      "hours": "10:00-17:00"
+    },
+    {
+      "days": "ג",
+      "hours": "10:00-13:00"
+    },
+    {
+      "days": "ו",
+      "hours": "09:00-13:00"
+    },
+    {
+      "days": "שבת",
+      "hours": "סגור (\"רוכבים\")"
+    }
+  ],
+  "navigation": [
+    {
+      "label_he": "דף הבית",
+      "url": "https://slalumpardeshana.co.il/"
+    },
+    {
+      "label_he": "אופניים",
+      "url": "https://slalumpardeshana.co.il/אופניים/",
+      "children": [
+        {
+          "label_he": "שיכוך מלא",
+          "url": "https://slalumpardeshana.co.il/product-category/אופניים/הרים/שיכוך-מלא/"
+        },
+        {
+          "label_he": "אופני זנב קשיח",
+          "url": "https://slalumpardeshana.co.il/product-category/אופניים/הרים/זנב-קשיח/"
+        },
+        {
+          "label_he": "אופני הרים חשמליים",
+          "url": "https://slalumpardeshana.co.il/product-category/אופניים/חשמלי/"
+        },
+        {
+          "label_he": "אופני ילדים",
+          "url": "https://slalumpardeshana.co.il/product-category/אופניים/ילדים/"
+        },
+        {
+          "label_he": "אופני עיר",
+          "url": "https://slalumpardeshana.co.il/product-category/אופניים/עיר/"
+        }
+      ]
+    },
+    {
+      "label_he": "אביזרים",
+      "url": "https://slalumpardeshana.co.il/אביזרים/"
+    },
+    {
+      "label_he": "סדנת תיקונים",
+      "url": "https://slalumpardeshana.co.il/סדנת-תיקונים/"
+    },
+    {
+      "label_he": "אופנים יד 2",
+      "url": "https://slalumpardeshana.co.il/אופנים-יד-2/"
+    }
+  ],
+  "footer_quick_links_he": [
+    "אופניים",
+    "אביזרים",
+    "סדנת תיקונים",
+    "הצהרת נגישות"
+  ],
+  "homepage_sections": [
+    {
+      "section": "hero_slider",
+      "text_he": [
+        "אופניים, אביזרים, חברים",
+        "סלאלום - הבית של האופניים שלך בפרדס חנה"
+      ]
+    },
+    {
+      "section": "welcome_back",
+      "text_he": "התגעגעתם? גם אנחנו — אופניים, שרות, אביזרים וחברים. אלמוג והצוות חזרו ואיתם תחושת הבית החם. צרו קשר, או פשוט בואו לבקר.",
+      "ctas_he": [
+        "התקשרו: 052-5660619",
+        "איפה אנחנו / איך להגיע"
+      ],
+      "image": "home_almog_miss_me"
+    },
+    {
+      "section": "three_pillars",
+      "items": [
+        {
+          "title_he": "אופניים",
+          "text_he": "האופניים שלנו יגרמו לכם לחייך, גם בעליות וגם בירידות",
+          "image": "tile_bikes",
+          "icon": "icon_bikes"
+        },
+        {
+          "title_he": "אביזרים",
+          "text_he": "אביזרי רכיבה מכל הסוגים, מנעולים, ביגוד, קסדות וצמיגים",
+          "image": "tile_gear",
+          "icon": "icon_gear"
+        },
+        {
+          "title_he": "סדנת תיקונים",
+          "text_he": "לרכב בראש שקט. שירות תיקונים אמין כאן בשבילכם.",
+          "image": "tile_service",
+          "icon": "icon_service"
+        }
+      ]
+    },
+    {
+      "section": "contact_strip",
+      "text_he": "אנחנו זמינים לכל שאלה, גם בווטסאפ."
+    },
+    {
+      "section": "featured_products",
+      "title_he": "האופניים שלנו",
+      "product_ids": [
+        1727,
+        1720,
+        1710,
+        1702
+      ],
+      "cta_he": "לכל האופניים בחנות"
+    },
+    {
+      "section": "footer",
+      "blocks": [
+        "opening_hours",
+        "contact",
+        "quick_links",
+        "social"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "title_he": "אופניים",
+      "url": "https://slalumpardeshana.co.il/אופניים/",
+      "summary_he": "מגוון רחב של אופניים מהמותגים המובילים בעולם — אופני הרים ושטח, אופני נשים, אופני ילדים, אופניים לרכיבה בעיר ועוד."
+    },
+    {
+      "title_he": "אביזרים",
+      "url": "https://slalumpardeshana.co.il/אביזרים/",
+      "summary_he": "מגוון רחב של ציוד ואביזרים מהמותגים המובילים בעולם, תחת קורת גג אחת ובמחירים משתלמים."
+    },
+    {
+      "title_he": "סדנת תיקונים",
+      "url": "https://slalumpardeshana.co.il/סדנת-תיקונים/",
+      "summary_he": "סדנת תיקונים מקצועית: תיקון, בנייה ושיפוץ של כל סוגי האופניים, ע\"י מכונאים מוסמכים, עם ציוד ומכשור מתקדם.",
+      "image": "tile_bikes"
+    },
+    {
+      "title_he": "אופנים יד 2",
+      "url": "https://slalumpardeshana.co.il/אופנים-יד-2/",
+      "summary_he": "אופניים יד שניה שעוברים טיפול, בדיקה והחלפת חלקים במידת הצורך."
+    },
+    {
+      "title_he": "הצהרת נגישות",
+      "url": "https://slalumpardeshana.co.il/הצהרת-נגישות/",
+      "summary_he": "הצהרת נגישות לפי ת\"י 5568 ברמה AA, תוסף נגישות באתר."
+    },
+    {
+      "title_he": "Cash-Back Slalom (מבצע שפג)",
+      "url": "https://slalumpardeshana.co.il/cashback_slalom/",
+      "summary_he": "מבצע קיץ: זיכוי קאש-בק של 7% באביזרים וציוד, עד 30.6.22. פג תוקף.",
+      "image": "promo_cashback"
+    },
+    {
+      "title_he": "סלאלום פרדס חנה ישן (דף בית ישן)",
+      "url": "https://slalumpardeshana.co.il/סלאלום-פרדס-חנה/",
+      "summary_he": "גרסה ישנה של דף הבית עם סליידר תמונות. לא בשימוש.",
+      "images": [
+        "slider_1",
+        "slider_main_banner",
+        "slider_2"
+      ]
+    }
+  ],
+  "tech_stack": [
+    "WordPress 5.7",
+    "WooCommerce 6.1",
+    "WPBakery Page Builder",
+    "Slider Revolution 6.5",
+    "LayerSlider 6.11"
+  ],
+  "images": {
+    "logo": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2021/07/5-2-לוגו.png",
+      "local": "images/site/logo.png"
+    },
+    "home_almog_miss_me": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/05/miss-me-almog.jpg",
+      "local": "images/site/home_almog_miss_me.jpg"
+    },
+    "icon_bikes": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/bikes.png",
+      "local": "images/site/icon_bikes.png"
+    },
+    "icon_gear": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/gear.png",
+      "local": "images/site/icon_gear.png"
+    },
+    "icon_service": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/service.png",
+      "local": "images/site/icon_service.png"
+    },
+    "tile_bikes": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/page1oleg-large-1.jpg",
+      "local": "images/site/tile_bikes.jpg"
+    },
+    "tile_gear": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/gear-temp.jpg",
+      "local": "images/site/tile_gear.jpg"
+    },
+    "tile_service": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2021/11/service-temp.jpg",
+      "local": "images/site/tile_service.jpg"
+    },
+    "page_header": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2021/08/slalum-test-slider-image-3-1024x705.jpg",
+      "local": "images/site/page_header.jpg"
+    },
+    "slider_1": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/סליידר-סלאלום-3.jpg",
+      "local": "images/site/slider_1.jpg"
+    },
+    "slider_main_banner": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/באנר-ראשי.jpg",
+      "local": "images/site/slider_main_banner.jpg"
+    },
+    "slider_2": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/11/סליידר-סלאלום-2.jpg",
+      "local": "images/site/slider_2.jpg"
+    },
+    "promo_cashback": {
+      "src": "https://slalumpardeshana.co.il/wp-content/uploads/2022/05/cash-back-7-percent-image-with-slalom-name.jpg",
+      "local": "images/site/promo_cashback.jpg"
+    }
+  }
+}
