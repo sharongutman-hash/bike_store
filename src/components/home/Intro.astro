@@ -1,0 +1,138 @@
+---
+/**
+ * Intro (reference: "You deserve the best" — split-word heading, tilted media
+ * cards that react to the cursor with inertia, copy + CTA + hand-written note).
+ */
+import { Image } from "astro:assets";
+import Button from "../ui/Button.astro";
+import Scribble from "../ui/Scribble.astro";
+import WheelBadge from "../ui/WheelBadge.astro";
+import { siteImage, site, telHref } from "../../lib/content";
+import { intro } from "../../data/copy";
+
+const cards = [
+  { key: "home_almog_miss_me", alt: "אלמוג מסלאלום פרדס חנה", rot: -8 },
+  { key: "tile_bikes", alt: "אופניים בחנות סלאלום", rot: 5 },
+  { key: "tile_service", alt: "סדנת התיקונים של סלאלום", rot: -3 },
+  { key: "tile_gear", alt: "אביזרי רכיבה בחנות", rot: 9 },
+] as const;
+---
+<section class="intro" aria-labelledby="intro-title">
+  <div class="container">
+    <h2 id="intro-title" class="intro__title display display-m" data-highlight-text>
+      {intro.title[0]}<br /><span class="text-accent">{intro.title[1]}</span>
+    </h2>
+
+    <div class="intro__grid">
+      <ul role="list" class="intro__cards" data-inertia data-reveal-children="pop">
+        {cards.map((c, i) => (
+          <li class="intro__card" style={`--rot:${c.rot}deg; --i:${i}`} data-inertia-item>
+            <div class="intro__card-tilt">
+              <div class="intro__card-inner" data-inertia-child>
+                <Image src={siteImage(c.key)} alt={c.alt} widths={[240, 360, 520]} sizes="(max-width: 767px) 45vw, 18vw" format="webp" quality={78} />
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="intro__copy">
+        <WheelBadge class="intro__badge" />
+        <p class="lead" data-reveal>{intro.body}</p>
+        <p class="intro__hours small" data-reveal>
+          א׳–ה׳ 10:00–17:00 (ג׳ עד 13:00) · ו׳ 09:00–13:00 · {site.contact.address_he}
+        </p>
+        <div class="intro__actions" data-reveal>
+          <Button href={telHref(site.contact.mobile)} icon="phone">התקשרו {site.contact.mobile}</Button>
+          <Button href="#contact" tone="light" icon="pin">איך מגיעים</Button>
+        </div>
+        <Scribble text={intro.note} arrow="down" class="intro__note" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    position: relative;
+    padding-top: 18em;
+    padding-bottom: 8em;
+  }
+  .intro__title {
+    text-align: center;
+    max-width: 14ch;
+    margin-inline: auto;
+  }
+  .intro__grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 3em;
+    align-items: center;
+    margin-top: 4em;
+  }
+
+  .intro__cards {
+    position: relative;
+    height: 34em;
+  }
+  .intro__card {
+    position: absolute;
+    width: 15em;
+    top: calc(var(--i) * 1.75em);
+    inset-inline-start: calc(var(--i) * 10em);
+    z-index: calc(4 - var(--i));
+  }
+  .intro__card:nth-child(2) { top: 5em; }
+  .intro__card:nth-child(4) { top: 8em; }
+  .intro__card-inner {
+    padding: 0.5em;
+    border-radius: var(--radius-m);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow var(--duration-base) var(--ease-smooth), scale var(--duration-base) var(--ease-default);
+  }
+  .intro__card-tilt { rotate: var(--rot); }
+  .intro__card-inner img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius-s);
+  }
+  @media (hover: hover) {
+    .intro__card:hover { z-index: 5; }
+    .intro__card:hover .intro__card-inner { box-shadow: var(--shadow-lift); scale: 1.04; }
+  }
+
+  .intro__copy {
+    position: relative;
+    display: grid;
+    gap: 1.25em;
+    justify-items: start;
+  }
+  .intro__badge { margin-bottom: 0.5em; }
+  .intro__hours { color: var(--color-ink-soft); }
+  .intro__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75em;
+  }
+  .intro__note {
+    position: absolute;
+    inset-inline-end: 0;
+    bottom: -6em;
+  }
+
+  @media screen and (max-width: 991px) {
+    .intro { padding-top: 14em; }
+    .intro__grid { grid-template-columns: 1fr; }
+    .intro__cards { height: 26em; }
+    .intro__card { width: 12em; inset-inline-start: calc(var(--i) * 8.5em); }
+  }
+  @media screen and (max-width: 767px) {
+    .intro { padding-top: 11em; padding-bottom: 6em; }
+    .intro__cards { height: 20em; }
+    .intro__card { width: 9.5em; inset-inline-start: calc(var(--i) * 6.25em); }
+    .intro__card:nth-child(4) { display: none; }
+    .intro__note { display: none; }
+  }
+</style>

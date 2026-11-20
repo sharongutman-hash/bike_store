@@ -1,0 +1,236 @@
+---
+/**
+ * Category stage (reference: pinned product sequence with benefit cards swapping
+ * around it while a white line draws behind). Without JS / reduced motion / mobile
+ * it is a plain grid of category cards. scripts/motion/stage.ts enhances it.
+ */
+import Button from "../ui/Button.astro";
+import WheelBadge from "../ui/WheelBadge.astro";
+import ProductImage from "../ui/ProductImage.astro";
+import Price from "../ui/Price.astro";
+import Scribble from "../ui/Scribble.astro";
+import { flatCategories, getProduct, productHref, displayName } from "../../lib/content";
+import { categoryPitch, stage } from "../../data/copy";
+
+const ids = [40, 41, 23, 22, 24, 48];
+const flat = flatCategories();
+const steps = ids.map((id) => {
+  const cat = flat.find((c) => c.id === id)!;
+  return { cat, product: getProduct(cat.representative_product_id!) };
+});
+---
+<section class="stage" data-stage aria-labelledby="stage-title" style={`--steps:${steps.length}`}>
+  <div class="stage__track" data-stage-track>
+    <div class="stage__sticky">
+      <svg class="stage__line" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+        <path data-stage-line d="M-40 640 C 220 420, 420 120, 700 260 S 1080 760, 1480 300" />
+      </svg>
+
+      <div class="stage__head container">
+        <h2 id="stage-title" class="display display-l" data-highlight-text>
+          {stage.title[0]} <span class="text-accent">{stage.title[1]}</span>
+        </h2>
+        <Scribble text={stage.note} arrow="down" class="stage__note" />
+      </div>
+
+      <ol role="list" class="stage__steps container">
+        {steps.map(({ cat, product }, i) => (
+          <li class="stage__step" data-stage-step style={`--i:${i}`}>
+            <a class="stage__visual" href={productHref(product)} tabindex="-1" aria-hidden="true" data-stage-visual>
+              <ProductImage product={product} sizes="(max-width: 991px) 80vw, 36vw" />
+            </a>
+            <article class="stage__card" data-stage-card>
+              <WheelBadge class="stage__badge" />
+              <p class="stage__count small">{cat.product_count} דגמים בקטגוריה</p>
+              <h3 class="stage__name">{cat.name_he}</h3>
+              <p class="stage__pitch">{categoryPitch[cat.id]}</p>
+              <a class="stage__product" href={productHref(product)}>
+                <span>{displayName(product)}</span>
+                <Price product={product} />
+              </a>
+              <Button href={`/shop/?cat=${cat.id}`} tone="ink">לכל ה{cat.name_he.replace(/^אופני /, "")}</Button>
+            </article>
+          </li>
+        ))}
+      </ol>
+
+      <ol class="stage__dots" aria-hidden="true">
+        {steps.map((_, i) => <li data-stage-dot class:list={{ "is-active": i === 0 }} />)}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stage {
+    position: relative;
+    padding-block: 4em 6em;
+  }
+  .stage__line {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    fill: none;
+    stroke: var(--color-surface);
+    stroke-width: 56;
+    stroke-linecap: round;
+    z-index: 0;
+  }
+  .stage__head {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .stage__note {
+    margin-top: 1em;
+  }
+
+  /* ---------- Default: grid of cards ---------- */
+  .stage__steps {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5em var(--grid-gutter);
+    margin-top: 3em;
+  }
+  .stage__step {
+    display: grid;
+    align-content: start;
+    gap: 0;
+  }
+  .stage__visual {
+    display: block;
+    width: 90%;
+    margin-inline: auto;
+    margin-bottom: -2.5em;
+    position: relative;
+    z-index: 1;
+  }
+  .stage__visual :global(.pimg--photo) { rotate: -3deg; }
+  .stage__card {
+    position: relative;
+    display: grid;
+    gap: 0.75em;
+    justify-items: start;
+    padding: 3.5em 1.75em 1.75em;
+    border-radius: var(--radius-l);
+    background: var(--color-brand-soft);
+  }
+  .stage__badge {
+    position: absolute;
+    top: -1.5em;
+    inset-inline-end: 1.5em;
+  }
+  .stage__count {
+    font-weight: var(--weight-medium);
+  }
+  .stage__name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-h3);
+    line-height: 0.8;
+  }
+  .stage__pitch { max-width: 32ch; }
+  .stage__product {
+    display: grid;
+    gap: 0.15em;
+    padding-block: 0.4em;
+    font-weight: var(--weight-medium);
+    border-bottom: 2px solid currentColor;
+  }
+  .stage__product :global(.price__now) { font-size: 1.5em; }
+  .stage__dots { display: none; }
+
+  @media screen and (max-width: 991px) {
+    .stage__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media screen and (max-width: 767px) {
+    .stage__steps { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Enhanced: pinned sequence (desktop, motion allowed) ---------- */
+  .stage.is-enhanced { padding: 0; }
+  .stage.is-enhanced .stage__track {
+    height: calc(var(--steps) * 75vh + 100vh);
+  }
+  .stage.is-enhanced .stage__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .stage.is-enhanced .stage__head {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 3vh;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .stage.is-enhanced .stage__note { display: none; }
+  .stage.is-enhanced .stage__steps {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    display: block;
+  }
+  .stage.is-enhanced .stage__step {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+  }
+  .stage.is-enhanced .stage__step.is-active { visibility: visible; }
+  .stage.is-enhanced .stage__visual {
+    --shift: 0em;
+    position: absolute;
+    top: 9vh;
+    left: 50%;
+    width: 38em;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* centred with margin, not translate: GSAP animates this element's transform */
+    margin-left: calc(-19em + var(--shift));
+  }
+  /* Push the product away from the card: card at inline-start on odd steps. */
+  :global([dir="rtl"]) .stage.is-enhanced .stage__step:nth-child(odd) .stage__visual,
+  :global([dir="ltr"]) .stage.is-enhanced .stage__step:nth-child(even) .stage__visual { --shift: -9em; }
+  :global([dir="rtl"]) .stage.is-enhanced .stage__step:nth-child(even) .stage__visual,
+  :global([dir="ltr"]) .stage.is-enhanced .stage__step:nth-child(odd) .stage__visual { --shift: 9em; }
+  .stage.is-enhanced .stage__visual :global(.pimg) { width: fit-content; max-height: 100%; }
+  .stage.is-enhanced .stage__visual :global(img) { max-height: 56vh; width: auto; max-width: 100%; }
+  .stage.is-enhanced .stage__card {
+    position: absolute;
+    top: 30vh;
+    width: 26em;
+    inset-inline-start: calc(var(--grid-margin) + 2em);
+    padding-top: 2.5em;
+  }
+  .stage.is-enhanced .stage__step:nth-child(even) .stage__card {
+    inset-inline-start: auto;
+    inset-inline-end: calc(var(--grid-margin) + 2em);
+  }
+  .stage.is-enhanced .stage__dots {
+    position: absolute;
+    top: 50%;
+    inset-inline-end: 1.25em;
+    translate: 0 -50%;
+    display: grid;
+    gap: 0.5em;
+    padding: 0;
+    list-style: none;
+    z-index: 2;
+  }
+  .stage.is-enhanced .stage__dots li {
+    width: 0.625em;
+    height: 0.625em;
+    border-radius: var(--radius-round);
+    background: var(--color-ink);
+    opacity: 0.2;
+    transition: opacity var(--duration-base) var(--ease-smooth), scale var(--duration-elastic) var(--ease-elastic);
+  }
+  .stage.is-enhanced .stage__dots li.is-active { opacity: 1; scale: 1.5; }
+</style>

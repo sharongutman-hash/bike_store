@@ -1,0 +1,114 @@
+---
+/**
+ * Comparison table (reference: "More for you. See the difference." — white panel,
+ * image on one side, rows with check / cross. Row rules grow in, checks bounce).
+ */
+import { Image } from "astro:assets";
+import Icon from "../ui/Icon.astro";
+import { siteImage } from "../../lib/content";
+import { compare } from "../../data/copy";
+---
+<section class="compare" aria-labelledby="compare-title">
+  <div class="compare__panel container">
+    <div class="compare__media">
+      <Image src={siteImage("tile_service")} alt="מכונאי בסדנת התיקונים של סלאלום" widths={[400, 640, 900]} sizes="(max-width: 767px) 100vw, 40vw" format="webp" quality={80} data-parallax="6" />
+    </div>
+    <div class="compare__body">
+      <h2 id="compare-title" class="display display-m" data-highlight-text>
+        <span class="text-accent">{compare.title[0]}</span><br />{compare.title[1]}
+      </h2>
+      <table class="compare__table" data-lines>
+        <caption class="sr-only">השוואה: קנייה בסלאלום מול קנייה באינטרנט</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="compare__th-label">מה מקבלים</th>
+            <th scope="col" class="compare__th">סלאלום</th>
+            <th scope="col" class="compare__th compare__th--muted">אונליין</th>
+          </tr>
+        </thead>
+        <tbody>
+          {compare.rows.map((row) => (
+            <tr>
+              <th scope="row" class="compare__label">{row.label}<span class="compare__rule" data-line aria-hidden="true" /></th>
+              <td>
+                <span class="compare__check" data-check>
+                  <Icon name={row.us ? "check" : "close"} label={row.us ? "כן" : "לא"} />
+                </span>
+              </td>
+              <td class="compare__muted"><Icon name={row.online ? "check" : "close"} label={row.online ? "כן" : "לא"} /></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .compare { padding-block: 4em; }
+  .compare__panel {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 3em;
+    padding-block: var(--grid-margin);
+    background: var(--color-surface);
+    border-radius: var(--radius-s);
+    max-width: calc(var(--size-container) - 2 * var(--grid-margin));
+  }
+  .compare__media {
+    overflow: hidden;
+    border-radius: var(--radius-s);
+    min-height: 26em;
+  }
+  .compare__media img {
+    width: 100%;
+    height: 112%;
+    object-fit: cover;
+  }
+  .compare__body { padding-block: 1.5em; }
+  .compare__table {
+    width: 100%;
+    margin-top: 2em;
+    border-collapse: collapse;
+  }
+  .compare__table thead th {
+    padding-bottom: 0.75em;
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+    text-align: start;
+    color: var(--color-brand-text);
+  }
+  .compare__th, .compare__table td { width: 6em; text-align: center !important; }
+  .compare__th--muted { color: var(--color-ink-soft) !important; }
+  .compare__label {
+    position: relative;
+    padding-block: 0.85em;
+    font-weight: var(--weight-medium);
+    font-size: var(--text-body);
+    text-align: start;
+  }
+  .compare__rule {
+    position: absolute;
+    inset-inline: 0 -12em;
+    bottom: 0;
+    height: 1px;
+    background: var(--color-line);
+  }
+  .compare__check {
+    display: inline-grid;
+    place-items: center;
+    width: 2.5em;
+    height: 2em;
+    border-radius: var(--radius-m);
+    background: var(--color-brand-soft);
+  }
+  .compare__muted { color: var(--color-ink-soft); }
+  .compare__table :global(.icon) { width: 1.25em; height: 1.25em; margin-inline: auto; }
+
+  @media screen and (max-width: 767px) {
+    .compare__panel { grid-template-columns: 1fr; gap: 1.5em; border-radius: 0; max-width: none; }
+    .compare__media { min-height: 14em; }
+    .compare__th, .compare__table td { width: 4em; }
+    .compare__rule { inset-inline-end: -8em; }
+  }
+</style>

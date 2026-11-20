@@ -1,0 +1,133 @@
+---
+/**
+ * Workshop + reviews (reference: dark photo section "Clean. Green. Goodness." with a
+ * parallax image, giant heading and a testimonial carousel with round arrows).
+ * Reviews are PLACEHOLDERS (see src/data/copy.ts).
+ */
+import { Image } from "astro:assets";
+import Button from "../ui/Button.astro";
+import CircleButton from "../ui/CircleButton.astro";
+import Icon from "../ui/Icon.astro";
+import { siteImage, whatsappHref } from "../../lib/content";
+import { workshop, reviews } from "../../data/copy";
+---
+<section class="workshop on-dark" id="workshop" aria-labelledby="workshop-title">
+  <div class="workshop__bg" aria-hidden="true">
+    <Image src={siteImage("tile_bikes")} alt="" widths={[640, 1024, 1600]} sizes="100vw" format="webp" quality={70} data-parallax="8" />
+  </div>
+
+  <div class="workshop__head container">
+    <p class="script workshop__eyebrow" data-reveal>{workshop.eyebrow}</p>
+    <h2 id="workshop-title" class="display display-xl workshop__title" data-highlight-text>
+      {workshop.title[0]}<br />{workshop.title[1]}
+    </h2>
+    <p class="lead workshop__body" data-reveal>{workshop.body}</p>
+    <div data-reveal>
+      <Button href={whatsappHref("היי, אשמח לקבוע תור לסדנה")} tone="brand" icon="wrench" external>קביעת תור לסדנה</Button>
+    </div>
+  </div>
+
+  <div class="reviews" data-reviews>
+    <div class="reviews__head container">
+      <h3 class="h3 reviews__title">{workshop.reviewsTitle}</h3>
+      <div class="reviews__arrows">
+        <CircleButton icon="arrow-right" label="ביקורת קודמת" tone="light" data-reviews-prev />
+        <CircleButton icon="arrow-left" label="ביקורת הבאה" tone="light" data-reviews-next />
+      </div>
+    </div>
+    <ul role="list" class="reviews__track" data-reviews-track data-reveal-children tabindex="0" aria-label="ביקורות לקוחות (דוגמה)">
+      {reviews.map((r, i) => (
+        <li class:list={["review", { "review--light": i % 3 === 1 }]}>
+          <p class="review__stars" aria-label="5 כוכבים">
+            {[0, 1, 2, 3, 4].map(() => <Icon name="star" />)}
+          </p>
+          <p class="review__title h4">{r.title}</p>
+          <p class="review__text">{r.text}</p>
+          <p class="review__name small">{r.name}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .workshop {
+    position: relative;
+    overflow: clip;
+    padding-block: 10em 6em;
+    background: var(--color-ink);
+    color: var(--color-surface);
+    isolation: isolate;
+  }
+  .workshop__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.5;
+  }
+  .workshop__bg img {
+    width: 100%;
+    height: 120%;
+    margin-top: -10%;
+    object-fit: cover;
+  }
+  .workshop__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgb(26 20 16 / 0.2), var(--color-ink) 92%);
+  }
+  .workshop__head {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 1.25em;
+  }
+  .workshop__eyebrow { color: var(--color-brand-soft); }
+  .workshop__title { color: var(--color-surface); }
+  .workshop__body { max-width: 38ch; }
+
+  .reviews { margin-top: 6em; }
+  .reviews__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1em;
+  }
+  .reviews__arrows { display: flex; gap: 0.5em; }
+  .reviews__track {
+    display: flex;
+    gap: var(--grid-gutter);
+    margin-top: 1.5em;
+    padding-inline: var(--grid-margin);
+    padding-bottom: 1em;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--grid-margin);
+    scrollbar-width: none;
+  }
+  .reviews__track::-webkit-scrollbar { display: none; }
+  .review {
+    flex: 0 0 22em;
+    scroll-snap-align: start;
+    display: grid;
+    align-content: start;
+    gap: 0.6em;
+    min-height: 15em;
+    padding: 1.75em;
+    border-radius: var(--radius-s);
+    background: rgb(255 255 255 / 0.08);
+    border: 1px solid rgb(255 255 255 / 0.14);
+    transition: translate var(--duration-elastic) var(--ease-elastic), rotate var(--duration-elastic) var(--ease-elastic);
+  }
+  .review--light { background: var(--color-surface); color: var(--color-ink); }
+  .review__stars { display: flex; gap: 0.15em; color: var(--color-brand); }
+  .review__stars :global(.icon) { width: 1em; height: 1em; }
+  .review__name { margin-top: auto; opacity: 0.75; }
+  @media (hover: hover) {
+    .review:hover { translate: 0 -0.5em; rotate: -1.5deg; }
+  }
+  @media screen and (max-width: 767px) {
+    .review { flex-basis: 80%; }
+  }
+</style>

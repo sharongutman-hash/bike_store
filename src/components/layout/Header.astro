@@ -1,0 +1,196 @@
+---
+/**
+ * Header (reference: socials on one side, small nav pills in the middle,
+ * "Shop all" on the other). Sits over the page; a menu panel opens on mobile.
+ */
+import CircleButton from "../ui/CircleButton.astro";
+import Button from "../ui/Button.astro";
+import Icon from "../ui/Icon.astro";
+import { site, whatsappHref } from "../../lib/content";
+
+interface Props {
+  tone?: "brand" | "cream";
+}
+const { tone = "brand" } = Astro.props;
+const nav = [
+  { label: "אופניים", href: "/shop/" },
+  { label: "חשמליים", href: "/shop/?cat=23" },
+  { label: "ילדים", href: "/shop/?cat=22" },
+  { label: "סדנת תיקונים", href: "/#workshop" },
+  { label: "יד 2", href: "/shop/?cat=34" },
+  { label: "צרו קשר", href: "#contact" },
+];
+---
+<header class:list={["header", `header--${tone}`]} data-header>
+  <div class="header__inner container">
+    <div class="header__social" data-load-nav>
+      <CircleButton icon="facebook" label="סלאלום בפייסבוק" href={site.contact.facebook} external />
+      <CircleButton icon="whatsapp" label="כתבו לנו בווטסאפ" href={whatsappHref()} external />
+      <CircleButton icon="phone" label={`התקשרו ${site.contact.mobile}`} href={`tel:${site.contact.mobile.replaceAll("-", "")}`} />
+    </div>
+
+    <nav class="header__nav" aria-label="ניווט ראשי" data-load-nav>
+      <ul role="list">
+        {nav.map((item) => (
+          <li><a class="header__link" href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="header__end" data-load-nav>
+      <a class="header__logo" href="/" aria-label="סלאלום פרדס חנה — דף הבית">
+        <span class="header__logo-text">סלאלום</span>
+      </a>
+      <Button href="/shop/" tone="ink" class="header__shop">לחנות</Button>
+      <button class="header__menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+        <Icon name="menu" />
+        <span class="sr-only">תפריט</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu" id="mobile-menu" hidden data-menu>
+    <nav aria-label="ניווט ראשי (נייד)">
+      <ul role="list">
+        <li><a href="/">דף הבית</a></li>
+        {nav.map((item) => (<li><a href={item.href}>{item.label}</a></li>))}
+      </ul>
+    </nav>
+    <p class="menu__contact">
+      <a href={`tel:${site.contact.mobile.replaceAll("-", "")}`}>{site.contact.mobile}</a>
+      <span aria-hidden="true">·</span>
+      <span>{site.contact.address_he}</span>
+    </p>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const menu = document.querySelector<HTMLElement>("[data-menu]");
+  if (toggle && menu) {
+    const set = (open: boolean) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      menu.hidden = !open;
+      document.documentElement.classList.toggle("menu-open", open);
+    };
+    toggle.addEventListener("click", () => set(toggle.getAttribute("aria-expanded") !== "true"));
+    menu.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest("a")) set(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !menu.hidden) {
+        set(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  .header {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: var(--z-header);
+    padding-block: 1.25em;
+  }
+  .header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1em;
+  }
+  .header__social {
+    display: flex;
+    gap: 0.375em;
+  }
+  .header--brand .header__social :global(.cbtn) { background: var(--color-ink-tint); }
+  .header--cream .header__social :global(.cbtn) { background: var(--color-surface); }
+
+  .header__nav ul {
+    display: flex;
+    gap: 0.375em;
+  }
+  .header__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    padding: 0.2em 0.9em 0.3em;
+    border-radius: var(--radius-pill);
+    background: var(--color-ink-tint);
+    font-weight: var(--weight-medium);
+    font-size: 1em;
+    transition:
+      background-color var(--duration-fast) var(--ease-smooth),
+      color var(--duration-fast) var(--ease-smooth),
+      scale var(--duration-base) var(--ease-default);
+  }
+  .header--cream .header__link { background: var(--color-surface); }
+  @media (hover: hover) {
+    .header__link:hover { background: var(--color-ink); color: var(--color-surface); }
+  }
+
+  .header__end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.75em;
+  }
+  .header__logo {
+    display: none;
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: 2.25em;
+    line-height: 1;
+    min-height: var(--tap-min);
+    align-items: center;
+  }
+  .header__menu-btn {
+    display: none;
+    place-items: center;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    border-radius: var(--radius-round);
+    background: var(--color-ink);
+    color: var(--color-surface);
+  }
+  .header__menu-btn :global(.icon) { width: 1.25em; height: 1.25em; }
+
+  .menu {
+    position: absolute;
+    inset-inline: var(--grid-margin);
+    top: calc(100% - 0.5em);
+    padding: 1.25em 1.5em;
+    border-radius: var(--radius-l);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-lift);
+  }
+  .menu ul { display: grid; }
+  .menu a {
+    display: flex;
+    align-items: center;
+    min-height: 3em;
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: 2.25em;
+    line-height: 1;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .menu__contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 1em;
+    font-size: var(--text-small);
+  }
+  .menu__contact a { font: inherit; border: 0; min-height: auto; text-decoration: underline; }
+
+  @media screen and (max-width: 991px) {
+    .header__inner { grid-template-columns: 1fr auto; }
+    .header__nav { display: none; }
+    .header__menu-btn { display: inline-grid; }
+  }
+  @media screen and (max-width: 479px) {
+    .header__social :global(.cbtn:nth-child(3)) { display: none; }
+    .header__shop { display: none; }
+  }
+</style>

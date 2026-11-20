@@ -1,0 +1,50 @@
+---
+import { formatPrice, discountPercent, type Product } from "../../lib/content";
+interface Props {
+  product: Product;
+  size?: "s" | "l";
+}
+const { product, size = "s" } = Astro.props;
+const { regular, sale } = product.price;
+const off = discountPercent(product);
+---
+<p class:list={["price", `price--${size}`]}>
+  {sale ? (
+    <>
+      <span class="price__now"><span class="sr-only">מחיר מבצע: </span>{formatPrice(sale)}</span>
+      <del class="price__was"><span class="sr-only">במקום </span>{formatPrice(regular)}</del>
+      <span class="price__off">−{off}%</span>
+    </>
+  ) : (
+    <span class="price__now">{formatPrice(regular)}</span>
+  )}
+</p>
+
+<style>
+  .price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25em 0.6em;
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    line-height: 1;
+  }
+  .price__now { font-size: 2em; }
+  .price--l .price__now { font-size: 3.5em; }
+  .price__was {
+    font-family: var(--font-body);
+    font-weight: var(--weight-regular);
+    font-size: 1em;
+    color: var(--color-ink-soft);
+  }
+  .price__off {
+    font-family: var(--font-body);
+    font-size: 0.8125em;
+    padding: 0.2em 0.6em;
+    border-radius: var(--radius-pill);
+    background: var(--color-ink);
+    color: var(--color-brand-soft);
+    direction: ltr;
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+/** Hand-written note with a drawn arrow (reference: deco text + arrow, rotated -7° / 9°). */
+interface Props {
+  text: string;
+  arrow?: "down" | "down-start" | "down-end" | "none";
+  class?: string;
+  [key: `data-${string}`]: string | undefined;
+}
+const { text, arrow = "down-start", class: className, ...rest } = Astro.props;
+const lines = text.split("\n");
+---
+<div class:list={["scribble", `scribble--${arrow}`, className]} aria-hidden="true" {...rest}>
+  <p class="script scribble__text">{lines.map((l, i) => (<>{l}{i < lines.length - 1 && <br />}</>))}</p>
+  {arrow !== "none" && (
+    <svg class="scribble__arrow" viewBox="0 0 60 70" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path data-draw d="M40 4c-14 10-24 26-22 46" />
+      <path data-draw d="M10 42l8 12 9-10" />
+    </svg>
+  )}
+</div>
+
+<style>
+  .scribble {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25em;
+    color: var(--color-ink);
+    rotate: -7deg;
+    pointer-events: none;
+  }
+  .scribble__text {
+    font-size: var(--text-script);
+    text-align: center;
+  }
+  .scribble__arrow {
+    width: 2.75em;
+    height: auto;
+    rotate: 9deg;
+  }
+  .scribble--down-end .scribble__arrow { transform: scaleX(-1); }
+</style>

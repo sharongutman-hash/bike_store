@@ -1,0 +1,49 @@
+---
+/** Round fact bubble (reference: .fact-cycle / .stage-fact). */
+interface Props {
+  value: string;
+  unit?: string;
+  label: string;
+  class?: string;
+  [key: `data-${string}`]: string | undefined;
+}
+const { value, unit, label, class: className, ...rest } = Astro.props;
+---
+<div class:list={["stat", className]} {...rest}>
+  <p class="stat__value">
+    <span class="stat__number">{value}</span>{unit && <span class="stat__unit">{unit}</span>}
+  </p>
+  <p class="stat__label">{label}</p>
+</div>
+
+<style>
+  .stat {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.35em;
+    width: 7.5em;
+    aspect-ratio: 1;
+    padding: 0.75em;
+    border-radius: var(--radius-round);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    text-align: center;
+  }
+  .stat__value {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    line-height: 0.7;
+    display: flex;
+    align-items: baseline;
+    gap: 0.05em;
+  }
+  .stat__number { font-size: 3.25em; }
+  .stat__unit { font-size: 1.875em; }
+  .stat__label {
+    font-size: 0.875em;
+    font-weight: var(--weight-medium);
+    line-height: 1.1;
+    max-width: 8ch;
+  }
+</style>

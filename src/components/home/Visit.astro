@@ -1,0 +1,111 @@
+---
+/**
+ * Visit (reference: "Don't just crave it. Get it." — headline surrounded by
+ * floating round badges that pop in and get knocked around by the cursor).
+ * Here the badges are the brands the shop carries.
+ */
+import Button from "../ui/Button.astro";
+import Scribble from "../ui/Scribble.astro";
+import { site, whatsappHref } from "../../lib/content";
+import { brands, visit } from "../../data/copy";
+
+// Bubble positions around the headline (percent of the section box).
+// The first 8 sit in bands above and below the headline (all that show on phones);
+// the rest frame the sides on wider screens.
+const spots = [
+  [10, 8], [36, 4], [62, 8], [88, 5], [12, 92], [38, 96], [64, 91], [90, 95],
+  [4, 34], [15, 56], [6, 72], [22, 26], [96, 36], [85, 56], [94, 72], [78, 26],
+  [50, 100], [24, 80], [76, 80],
+];
+const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.business.name_he} ${site.contact.address_he}`)}`;
+---
+<section class="visit" aria-labelledby="visit-title">
+  <ul role="list" class="visit__bubbles" data-inertia data-reveal-children="pop" aria-label="מותגים בחנות">
+    {brands.map((b, i) => {
+      const [x, y] = spots[i % spots.length];
+      return (
+        <li class="visit__bubble" style={`--x:${x}%; --y:${y}%; --s:${0.85 + ((i * 7) % 5) / 10}`} data-inertia-item>
+          <span class="visit__bubble-inner" data-inertia-child>{b}</span>
+        </li>
+      );
+    })}
+  </ul>
+
+  <div class="visit__content container">
+    <Scribble text={visit.note} arrow="down" class="visit__note" />
+    <h2 id="visit-title" class="display display-m" data-highlight-text>
+      {visit.title[0]}<br /><span class="text-accent">{visit.title[1]}</span>
+    </h2>
+    <p class="lead" data-reveal>{site.contact.address_he}</p>
+    <div class="visit__actions" data-reveal>
+      <Button href={mapHref} icon="pin" external>ניווט לחנות</Button>
+      <Button href={whatsappHref("היי סלאלום, אשמח למידע נוסף")} tone="light" icon="whatsapp" external>שאלה בווטסאפ</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .visit {
+    position: relative;
+    min-height: 46em;
+    display: grid;
+    place-items: center;
+    padding-block: 6em;
+    overflow: clip;
+  }
+  .visit__bubbles {
+    position: absolute;
+    inset: 2em var(--grid-margin);
+  }
+  .visit__bubble {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 0;
+    height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .visit__bubble-inner {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: calc(5.75em * var(--s));
+    aspect-ratio: 1;
+    padding: 0.5em;
+    border-radius: var(--radius-round);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: 1.4em;
+    line-height: 0.9;
+    text-align: center;
+    direction: ltr;
+  }
+  .visit__bubble:nth-child(3n) .visit__bubble-inner { background: var(--color-brand); }
+  .visit__bubble:nth-child(5n) .visit__bubble-inner { background: var(--color-ink); color: var(--color-brand-soft); }
+
+  .visit__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: 1.25em;
+    text-align: center;
+    pointer-events: none;
+  }
+  .visit__content :global(a) { pointer-events: auto; }
+  .visit__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75em; }
+
+  @media screen and (max-width: 991px) {
+    .visit__bubble:nth-child(n + 13) { display: none; }
+  }
+  @media screen and (max-width: 767px) {
+    .visit { min-height: 40em; }
+    .visit__bubble:nth-child(n + 9) { display: none; }
+    .visit__bubble-inner { width: calc(4.5em * var(--s)); font-size: 1.125em; }
+    .visit__note { display: none; }
+  }
+</style>

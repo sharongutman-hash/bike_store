@@ -1,0 +1,46 @@
+---
+/** Round icon button (social links, slider arrows). Always 44px+ hit area. */
+import Icon, { type IconName } from "./Icon.astro";
+
+interface Props {
+  icon: IconName;
+  label: string;
+  href?: string;
+  tone?: "tint" | "light" | "ink";
+  external?: boolean;
+  class?: string;
+  [key: `data-${string}`]: string | undefined;
+}
+const { icon, label, href, tone = "tint", external = false, class: className, ...rest } = Astro.props;
+const Tag = href ? "a" : "button";
+const extra = href
+  ? { href, ...(external ? { target: "_blank", rel: "noopener" } : {}) }
+  : { type: "button" };
+---
+<Tag class:list={["cbtn", `cbtn--${tone}`, className]} aria-label={label} {...extra} {...rest}>
+  <Icon name={icon} />
+</Tag>
+
+<style>
+  .cbtn {
+    display: inline-grid;
+    place-items: center;
+    width: max(2.75em, var(--tap-min));
+    height: max(2.75em, var(--tap-min));
+    border-radius: var(--radius-round);
+    font-size: 1em;
+    transition:
+      translate var(--duration-elastic) var(--ease-elastic),
+      rotate var(--duration-elastic) var(--ease-elastic),
+      scale var(--duration-base) var(--ease-default);
+  }
+  .cbtn :global(.icon) { width: 1.25em; height: 1.25em; }
+  .cbtn--tint { background: var(--color-bg); color: var(--color-ink); }
+  .cbtn--light { background: var(--color-surface); color: var(--color-ink); }
+  .cbtn--ink { background: var(--color-ink); color: var(--color-surface); }
+  @media (hover: hover) {
+    .cbtn:hover { scale: 1.1; rotate: -8deg; }
+  }
+  .cbtn:active { scale: 0.92; transition-duration: var(--duration-instant); }
+  .cbtn:disabled { opacity: 0.4; cursor: default; }
+</style>

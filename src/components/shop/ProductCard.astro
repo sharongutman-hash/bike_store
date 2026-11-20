@@ -1,0 +1,125 @@
+---
+/**
+ * Product card for grids. Hover: the visual springs up and tilts
+ * (translate/rotate 0.725s elastic, shadow 0.35s smooth — reference card hover).
+ */
+import ProductImage from "../ui/ProductImage.astro";
+import Price from "../ui/Price.astro";
+import Icon from "../ui/Icon.astro";
+import { cutout, displayName, flatCategories, productHref, currentPrice, typePrefix, type Product } from "../../lib/content";
+
+interface Props {
+  product: Product;
+  index?: number;
+  headingLevel?: "h2" | "h3";
+}
+const { product, index = 0, headingLevel = "h3" } = Astro.props;
+const flat = flatCategories();
+const catIds = product.categories_he
+  .map((name) => flat.find((c) => c.name_he === name)?.id)
+  .filter(Boolean)
+  .join(",");
+const H = headingLevel;
+const isCutout = Boolean(cutout(product));
+---
+<li class="pcard" data-shop-item data-cats={catIds} data-price={currentPrice(product)} data-index={index}>
+  <a class="pcard__link" href={productHref(product)}>
+    <div class:list={["pcard__media", { "pcard__media--cutout": isCutout }]}>
+      <ProductImage product={product} sizes="(max-width: 479px) 92vw, (max-width: 991px) 45vw, 30vw" widths={[320, 480, 720]} />
+      {product.price.sale && <span class="pcard__flag">מבצע</span>}
+    </div>
+    <div class="pcard__body">
+      <p class="pcard__cat small">{typePrefix(product) ?? product.representing_category.name_he}</p>
+      <H class="pcard__name">{displayName(product)}</H>
+      <div class="pcard__foot">
+        <Price product={product} />
+        <span class="pcard__go" aria-hidden="true"><Icon name="arrow" /></span>
+      </div>
+    </div>
+  </a>
+</li>
+
+<style>
+  .pcard { list-style: none; }
+  .pcard__link {
+    display: grid;
+    height: 100%;
+    border-radius: var(--radius-l);
+    background: var(--color-surface);
+    overflow: hidden;
+    transition: box-shadow var(--duration-base) var(--ease-smooth);
+  }
+  .pcard__media {
+    position: relative;
+    display: grid;
+    aspect-ratio: 4 / 3;
+    margin: 0.5em 0.5em 0;
+    border-radius: var(--radius-m);
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+  .pcard__media--cutout { background: var(--color-brand-soft); padding: 1.25em; }
+  .pcard__media :global(.pimg) {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    transition:
+      translate var(--duration-elastic) var(--ease-elastic),
+      rotate var(--duration-elastic) var(--ease-elastic),
+      scale var(--duration-base) var(--ease-default);
+  }
+  .pcard__media :global(.pimg--photo) { box-shadow: none; padding: 0; background: none; border-radius: 0; }
+  .pcard__media :global(.pimg--photo img) { height: 100%; aspect-ratio: auto; border-radius: 0; }
+  .pcard__media :global(.pimg--cutout img) { height: 100%; object-fit: contain; }
+  .pcard__flag {
+    position: absolute;
+    top: 0.75em;
+    inset-inline-start: 0.75em;
+    padding: 0.2em 0.75em 0.3em;
+    border-radius: var(--radius-pill);
+    background: var(--color-ink);
+    color: var(--color-brand-soft);
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+  }
+  .pcard__body {
+    display: grid;
+    gap: 0.35em;
+    padding: 1em 1.25em 1.25em;
+  }
+  .pcard__cat { color: var(--color-ink-soft); font-weight: var(--weight-medium); }
+  .pcard__name {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: 2.25em;
+    line-height: 0.85;
+    direction: ltr;
+    text-align: end;
+  }
+  .pcard__foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 0.5em;
+    margin-top: 0.25em;
+  }
+  .pcard__go {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2.75em;
+    height: 2.75em;
+    border-radius: var(--radius-round);
+    background: var(--color-ink);
+    color: var(--color-surface);
+    transition: rotate var(--duration-elastic) var(--ease-elastic), scale var(--duration-base) var(--ease-default);
+  }
+  @media (hover: hover) {
+    .pcard__link:hover { box-shadow: var(--shadow-lift); }
+    .pcard__link:hover .pcard__media :global(.pimg) { translate: 0 -0.5em; rotate: -3deg; scale: 1.04; }
+    :global([dir="rtl"]) .pcard__link:hover .pcard__media :global(.pimg) { rotate: 3deg; }
+    .pcard__link:hover .pcard__go { rotate: 45deg; scale: 1.1; }
+    :global([dir="rtl"]) .pcard__link:hover .pcard__go { rotate: -45deg; }
+  }
+  .pcard__link:focus-visible { outline-offset: 4px; border-radius: var(--radius-l); }
+</style>

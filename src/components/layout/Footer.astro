@@ -1,0 +1,202 @@
+---
+/**
+ * Footer (reference: product card + info block + giant wordmark rising from the bottom edge).
+ */
+import Button from "../ui/Button.astro";
+import CircleButton from "../ui/CircleButton.astro";
+import Icon from "../ui/Icon.astro";
+import ProductImage from "../ui/ProductImage.astro";
+import { site, getProduct, whatsappHref, telHref } from "../../lib/content";
+
+const featured = getProduct(1186);
+const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.business.name_he} ${site.contact.address_he}`)}`;
+const year = new Date().getFullYear();
+const dayLabel = (days: string) =>
+  days === "שבת" ? "שבת" : days.includes(",") ? days.split(",").map((d) => `${d.trim()}׳`).join(" ") : `יום ${days}׳`;
+const accessibilityHref = site.pages.find((p) => p.title_he === "הצהרת נגישות")?.url ?? "/";
+---
+<footer class="footer" id="contact">
+  <div class="footer__grid container">
+    <a class="footer__card" href="/shop/" data-reveal>
+      <p class="footer__card-title display display--bold">הכל<br />לאופניים<br />במקום אחד</p>
+      <ProductImage product={featured} sizes="(max-width: 767px) 80vw, 30vw" class="footer__card-img" />
+      <span class="footer__card-cta"><Icon name="arrow" /> לכל האופניים</span>
+    </a>
+
+    <div class="footer__info">
+      <h2 class="footer__heading display" data-highlight-text>
+        {site.business.name_he}<br /><span class="text-accent">{site.business.tagline_he}</span>
+      </h2>
+
+      <div class="footer__cols">
+        <section aria-labelledby="f-hours">
+          <h3 id="f-hours" class="footer__label"><Icon name="clock" /> שעות פעילות</h3>
+          <dl class="footer__hours">
+            {site.opening_hours_he.map((h) => (
+              <div><dt>{dayLabel(h.days)}</dt><dd>{h.hours.startsWith("סגור") ? "סגור" : h.hours}</dd></div>
+            ))}
+          </dl>
+        </section>
+
+        <section aria-labelledby="f-contact">
+          <h3 id="f-contact" class="footer__label"><Icon name="phone" /> דברו איתנו</h3>
+          <ul role="list" class="footer__list">
+            <li><a href={telHref(site.contact.phone)}>טלפון: {site.contact.phone}</a></li>
+            <li><a href={telHref(site.contact.mobile)}>נייד: {site.contact.mobile}</a></li>
+            <li><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>
+            <li><a href={mapHref} target="_blank" rel="noopener">{site.contact.address_he}</a></li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="f-links">
+          <h3 id="f-links" class="footer__label"><Icon name="arrow" /> ניווט מהיר</h3>
+          <ul role="list" class="footer__list">
+            <li><a href="/shop/">אופניים</a></li>
+            <li><a href="/shop/?cat=48">אביזרים ומיגון</a></li>
+            <li><a href="/#workshop">סדנת תיקונים</a></li>
+            <li><a href="/shop/?cat=34">אופניים יד 2</a></li>
+            <li><a href={accessibilityHref}>הצהרת נגישות</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="footer__actions">
+        <Button href={whatsappHref("היי סלאלום, אשמח למידע נוסף")} icon="whatsapp" external>כתבו לנו בווטסאפ</Button>
+        <CircleButton icon="facebook" label="סלאלום בפייסבוק" href={site.contact.facebook} tone="light" external />
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__mark" aria-hidden="true">
+    <span class="footer__wordmark" data-footer-mark>סלאלום</span>
+  </div>
+  <p class="footer__bottom container small">© {year} {site.business.name_he}. כל הזכויות שמורות.</p>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    overflow: hidden;
+    padding-top: 6em;
+    background: var(--color-bg);
+  }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: var(--grid-gutter) 3em;
+    align-items: start;
+  }
+
+  .footer__card {
+    position: relative;
+    display: grid;
+    min-height: 32em;
+    padding: 2em;
+    overflow: hidden;
+    border-radius: var(--radius-m);
+    background: var(--color-brand);
+    color: var(--color-ink);
+    isolation: isolate;
+  }
+  .footer__card-title { font-size: 5.5em; position: relative; z-index: 1; }
+  .footer__card-img {
+    position: absolute;
+    inset-inline-start: -8%;
+    bottom: 3.5em;
+    width: 105%;
+    rotate: -8deg;
+    transition: translate var(--duration-elastic) var(--ease-elastic), rotate var(--duration-elastic) var(--ease-elastic);
+  }
+  .footer__card-cta {
+    position: absolute;
+    bottom: 1.25em;
+    inset-inline-start: 1.25em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    min-height: var(--tap-min);
+    padding: 0.3em 1em 0.4em;
+    border-radius: var(--radius-pill);
+    background: var(--color-ink);
+    color: var(--color-surface);
+    font-weight: var(--weight-medium);
+  }
+  @media (hover: hover) {
+    .footer__card:hover .footer__card-img { translate: 0 -0.75em; rotate: -4deg; }
+  }
+
+  .footer__heading { font-size: 4.125em; margin-bottom: 0.6em; }
+  .footer__cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2em;
+  }
+  .footer__label {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    margin-bottom: 0.75em;
+    font-size: var(--text-body);
+    font-weight: var(--weight-bold);
+  }
+  .footer__hours div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    padding-block: 0.4em;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .footer__hours dd { direction: ltr; }
+  .footer__list { display: grid; }
+  .footer__list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color var(--duration-fast) var(--ease-smooth);
+    overflow-wrap: anywhere;
+  }
+  .footer__list a:hover { text-decoration-color: currentColor; }
+  .footer__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75em;
+    margin-top: 2em;
+  }
+
+  .footer__mark {
+    margin-top: 0.15em; /* em of the wordmark size */
+    height: 0.8em;
+    font-size: var(--text-wordmark);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  .footer__wordmark {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    line-height: 0.8;
+    color: var(--color-ink);
+    display: block;
+  }
+  .footer__bottom {
+    position: absolute;
+    bottom: 0.75em;
+    inset-inline: 0;
+    color: var(--color-bg);
+  }
+
+  @media screen and (max-width: 991px) {
+    .footer__grid { grid-template-columns: 1fr; }
+    .footer__card { min-height: 26em; }
+    .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media screen and (max-width: 479px) {
+    .footer__cols { grid-template-columns: 1fr; }
+    .footer__card-title { font-size: 4.25em; }
+    .footer__heading { font-size: 3.25em; }
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+/**
+ * Product visual. Studio shots render as a floating cut-out; shop-floor photos
+ * render as a framed photo card (like the reference's tilted video cards).
+ */
+import { Image } from "astro:assets";
+import { contentImage, cutout, displayName, type Product } from "../../lib/content";
+
+interface Props {
+  product: Product;
+  sizes: string;
+  widths?: number[];
+  loading?: "eager" | "lazy";
+  frame?: "auto" | "photo";
+  class?: string;
+  fetchpriority?: "high" | "auto";
+}
+const { product, sizes, widths = [320, 480, 720, 960], loading = "lazy", frame = "auto", class: className, fetchpriority } = Astro.props;
+const cut = frame === "auto" ? cutout(product) : null;
+const src = cut ?? contentImage(product.images[0].local);
+const alt = product.images[0].alt || displayName(product);
+---
+<div class:list={["pimg", cut ? "pimg--cutout" : "pimg--photo", className]}>
+  <Image src={src} alt={alt} sizes={sizes} widths={widths} loading={loading} fetchpriority={fetchpriority} format="webp" quality={82} />
+</div>
+
+<style>
+  .pimg { position: relative; }
+  .pimg img { width: 100%; height: 100%; }
+  .pimg--cutout img {
+    object-fit: contain;
+    filter: drop-shadow(0 1.25em 1.25em rgb(26 20 16 / 0.18));
+  }
+  .pimg--photo {
+    padding: 0.5em;
+    background: var(--color-surface);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-card);
+  }
+  .pimg--photo img {
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-s);
+  }
+</style>

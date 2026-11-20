@@ -1,0 +1,217 @@
+---
+/**
+ * Hero (reference: giant wordmark → CTA → floating product on a white ring,
+ * fact bubbles + hand-written note on one side, condensed statement on the other).
+ * Load sequence and idle float are in scripts/motion/hero.ts.
+ */
+import Button from "../ui/Button.astro";
+import StatBubble from "../ui/StatBubble.astro";
+import Scribble from "../ui/Scribble.astro";
+import ProductImage from "../ui/ProductImage.astro";
+import Price from "../ui/Price.astro";
+import { getProduct, productHref, displayName, site } from "../../lib/content";
+import { hero, heroFacts } from "../../data/copy";
+
+const product = getProduct(1186);
+---
+<section class="hero" data-hero aria-labelledby="hero-title">
+  <div class="hero__top container">
+    <h1 id="hero-title" class="hero__wordmark" data-hero-wordmark>
+      <span aria-hidden="true">{hero.wordmark}</span>
+      <span class="sr-only">{site.business.name_he} — {site.business.tagline_he}</span>
+    </h1>
+    <div class="hero__cta" data-hero-cta>
+      <Button href="/shop/" size="l">לכל האופניים</Button>
+    </div>
+  </div>
+
+  <div class="hero__stage container">
+    <div class="hero__facts">
+      <Scribble text={hero.note} arrow="down-end" class="hero__note" data-hero-note />
+      <ul role="list" class="hero__fact-list">
+        {heroFacts.map((f) => (
+          <li data-hero-fact><StatBubble value={f.value} unit={f.unit} label={f.label} /></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="hero__visual" data-hero-visual>
+      <svg class="hero__ring" viewBox="0 0 600 600" aria-hidden="true">
+        <circle data-hero-ring cx="300" cy="300" r="288" fill="none" stroke="currentColor" stroke-width="14" />
+      </svg>
+      <div class="hero__tilt" data-hero-tilt>
+        <a class="hero__product" href={productHref(product)} data-hero-product aria-label={`${displayName(product)} — לעמוד המוצר`}>
+          <ProductImage product={product} sizes="(max-width: 767px) 92vw, 48vw" widths={[480, 720, 960, 1200]} loading="eager" fetchpriority="high" />
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__copy">
+      <p class="hero__eyebrow" data-hero-eyebrow>{hero.eyebrow}</p>
+      <h2 class="hero__statement" data-hero-title>
+        {hero.title.map((line) => (<span class="hero__line">{line}</span>))}
+      </h2>
+      <p class="hero__body" data-hero-body>{hero.body}</p>
+      <a class="hero__featured" href={productHref(product)} data-hero-underline>
+        <span class="hero__featured-name">{displayName(product)}</span>
+        <Price product={product} />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: clip;
+    padding-top: 5.5em;
+    padding-bottom: 12em;
+    background: var(--color-brand);
+    color: var(--color-ink);
+  }
+
+  .hero__top {
+    display: grid;
+    justify-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero__wordmark {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-wordmark);
+    line-height: 0.72;
+    letter-spacing: -0.015em;
+    margin-top: 0.08em;
+  }
+  .hero__cta { margin-top: 1.25em; }
+
+  .hero__stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3fr 6fr 3fr;
+    align-items: center;
+    gap: var(--grid-gutter);
+    margin-top: -1.5em;
+  }
+
+  /* Facts: bubbles on an arc, the note above them */
+  .hero__facts {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    justify-items: start;
+    gap: 1em;
+  }
+  .hero__note { margin-inline-start: 1em; }
+  .hero__fact-list {
+    display: grid;
+    gap: 0.25em;
+  }
+  .hero__fact-list li:nth-child(1) { margin-inline-start: 6em; }
+  .hero__fact-list li:nth-child(2) { margin-inline-start: 2.5em; }
+  .hero__fact-list li:nth-child(3) { margin-inline-start: 0; }
+
+  /* Visual: white ring + floating product */
+  .hero__visual {
+    position: relative;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+  }
+  .hero__ring {
+    position: absolute;
+    inset: -6%;
+    width: 112%;
+    height: 112%;
+    color: var(--color-surface);
+    rotate: -90deg;
+  }
+  .hero__tilt {
+    position: relative;
+    width: 94%;
+    perspective: 1000px;
+  }
+  .hero__product {
+    display: block;
+    transform-origin: 60% 50%;
+    transform: rotate(-6deg);
+  }
+  :global([dir="rtl"]) .hero__product { transform: rotate(6deg); }
+  .hero__product:focus-visible { outline-offset: -1em; }
+
+  /* Copy */
+  .hero__copy {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 1em;
+  }
+  .hero__eyebrow {
+    font-weight: var(--weight-bold);
+    font-size: var(--text-body);
+  }
+  .hero__statement {
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-display-s);
+    line-height: 0.78;
+    color: var(--color-surface);
+  }
+  .hero__line { display: block; }
+  .hero__body {
+    font-size: var(--text-body);
+    max-width: 30ch;
+  }
+  .hero__featured {
+    display: grid;
+    gap: 0.25em;
+    justify-self: start;
+    padding-block: 0.5em;
+    border-bottom: 2px solid currentColor;
+  }
+  .hero__featured-name { font-weight: var(--weight-bold); }
+  .hero__featured :global(.price__was) { color: var(--color-ink); }
+
+  /* Hidden until the load sequence runs (only when motion is allowed). */
+  :global(html.motion-ok) :is(
+    [data-hero-wordmark], [data-hero-cta], [data-hero-fact], [data-hero-note],
+    [data-hero-product], .hero__line, [data-hero-eyebrow], [data-hero-body], [data-hero-underline]
+  ),
+  :global(html.motion-ok:has([data-hero]) [data-load-nav]) {
+    opacity: 0;
+  }
+
+  @media screen and (max-width: 991px) {
+    .hero { padding-bottom: 9em; }
+    .hero__stage {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "visual visual" "facts copy";
+      margin-top: 1em;
+      row-gap: 2em;
+    }
+    .hero__visual { grid-area: visual; width: 78%; justify-self: center; }
+    .hero__facts { grid-area: facts; }
+    .hero__copy { grid-area: copy; }
+  }
+
+  @media screen and (max-width: 767px) {
+    .hero { padding-top: 6em; }
+    .hero__stage {
+      grid-template-columns: 1fr;
+      grid-template-areas: "visual" "facts" "copy";
+    }
+    .hero__visual { width: 100%; }
+    .hero__facts { justify-items: center; }
+    .hero__fact-list {
+      grid-auto-flow: column;
+      gap: 0.5em;
+    }
+    .hero__fact-list li:nth-child(n) { margin: 0; }
+    .hero__fact-list li:nth-child(2) { margin-top: 2em; }
+    .hero__note { display: none; }
+  }
+  @media screen and (max-width: 479px) {
+    .hero__fact-list :global(.stat) { width: 6.5em; }
+  }
+</style>

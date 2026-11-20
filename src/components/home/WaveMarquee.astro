@@ -1,0 +1,69 @@
+---
+/**
+ * Interactive wave band (reference: the curved "IT'S A MATCH(A)" marquee).
+ * Static markup is a gentle S-curve with the slogan on it; scripts/motion/wave.ts
+ * makes it live: text scrubs along the path on scroll, the wave swells with
+ * scroll speed and bulges toward the pointer.
+ */
+import { marquee } from "../../data/copy";
+
+interface Props {
+  text?: string;
+  tone?: "ink" | "brand";
+  id?: string;
+}
+const { text = marquee, tone = "ink", id = "wave" } = Astro.props;
+const repeated = text.repeat(6);
+const W = 1440;
+const H = 420;
+// Static fallback path (matches the JS generator at rest).
+const d = `M -160 250 C 200 90, 520 90, 760 210 S 1260 350, 1600 170`;
+---
+<div class:list={["wave", `wave--${tone}`]} data-wave aria-hidden="true">
+  <svg class="wave__svg" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" data-wave-svg>
+    <defs>
+      <path id={`${id}-path`} d={d} data-wave-path />
+    </defs>
+    <use href={`#${id}-path`} class="wave__band" data-wave-band />
+    <text class="wave__text" dy="0.32em" direction="ltr">
+      <textPath href={`#${id}-path`} startOffset="-30%" data-wave-text>{repeated}</textPath>
+    </text>
+  </svg>
+</div>
+
+<style>
+  .wave {
+    --wave-band: var(--color-ink);
+    --wave-text: var(--color-brand);
+    position: relative;
+    z-index: 3;
+    height: 26em;
+    margin-block: -13em;
+    pointer-events: none;
+    touch-action: pan-y;
+  }
+  .wave--brand { --wave-band: var(--color-brand); --wave-text: var(--color-ink); }
+  .wave__svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .wave__band {
+    fill: none;
+    stroke: var(--wave-band);
+    stroke-width: 116;
+    stroke-linecap: butt;
+  }
+  /* LTR layout along the path; the Hebrew runs are still ordered RTL by the bidi algorithm. */
+  .wave__text {
+    direction: ltr;
+    fill: var(--wave-text);
+    font-family: var(--font-display);
+    font-weight: var(--weight-bold);
+    font-size: 84px;
+    letter-spacing: 0.01em;
+  }
+  @media screen and (max-width: 767px) {
+    .wave { height: 18em; margin-block: -9em; }
+  }
+</style>

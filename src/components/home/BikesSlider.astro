@@ -1,0 +1,150 @@
+---
+/**
+ * "Our bikes" (reference: "Chunky Flavour" — huge title, product slider with
+ * creative prev/next transforms and round arrow buttons).
+ * Without JS the track is a horizontal scroll-snap list.
+ */
+import Button from "../ui/Button.astro";
+import CircleButton from "../ui/CircleButton.astro";
+import ProductImage from "../ui/ProductImage.astro";
+import Price from "../ui/Price.astro";
+import Scribble from "../ui/Scribble.astro";
+import { products, productHref, displayName, typePrefix } from "../../lib/content";
+import { bikes } from "../../data/copy";
+
+const items = products;
+---
+<section class="bikes" aria-labelledby="bikes-title">
+  <div class="bikes__head container">
+    <h2 id="bikes-title" class="display display-xl" data-highlight-text>{bikes.title}</h2>
+    <p class="bikes__sub h4 text-accent" data-reveal>{bikes.sub}</p>
+    <Scribble text={bikes.note} arrow="down-end" class="bikes__note" />
+  </div>
+
+  <div class="slider container" data-slider role="region" aria-roledescription="קרוסלה" aria-label={bikes.title}>
+    <ul role="list" class="slider__track" data-slider-track>
+      {items.map((p, i) => (
+        <li class="slider__slide" data-slider-slide aria-roledescription="שקופית" aria-label={`${i + 1} מתוך ${items.length}: ${displayName(p)}`}>
+          <a class="slider__visual" href={productHref(p)} tabindex="-1" aria-hidden="true">
+            <ProductImage product={p} sizes="(max-width: 767px) 80vw, 44vw" />
+          </a>
+          <div class="slider__info">
+            <p class="slider__cat small">{typePrefix(p) ?? p.representing_category.name_he}</p>
+            <h3 class="slider__name h3">{displayName(p)}</h3>
+            <Price product={p} />
+            <Button href={productHref(p)}>לפרטים</Button>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <div class="slider__controls">
+      <CircleButton icon="arrow-right" label="הקודם" tone="light" data-slider-prev />
+      <p class="slider__status small" aria-live="polite" data-slider-status>1 / {items.length}</p>
+      <CircleButton icon="arrow-left" label="הבא" tone="light" data-slider-next />
+    </div>
+  </div>
+</section>
+
+<style>
+  .bikes {
+    position: relative;
+    padding-block: 8em 6em;
+    overflow: clip;
+  }
+  .bikes__head {
+    position: relative;
+    text-align: center;
+  }
+  .bikes__sub { margin-top: 0.4em; }
+  .bikes__note {
+    position: absolute;
+    inset-inline-start: var(--grid-margin);
+    top: 60%;
+  }
+
+  /* ---------- Default (no JS): scroll-snap row ---------- */
+  .slider { margin-top: 3em; }
+  .slider__track {
+    display: flex;
+    gap: var(--grid-gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1em;
+  }
+  .slider__slide {
+    flex: 0 0 min(80%, 28em);
+    scroll-snap-align: center;
+    display: grid;
+    align-content: start;
+    gap: 1em;
+  }
+  .slider__info {
+    display: grid;
+    gap: 0.5em;
+    justify-items: center;
+    text-align: center;
+  }
+  .slider__cat { font-weight: var(--weight-medium); color: var(--color-ink-soft); }
+  .slider__controls {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 2em;
+  }
+  .slider__status { min-width: 4ch; text-align: center; direction: ltr; }
+
+  /* ---------- Enhanced ---------- */
+  .slider.is-enhanced .slider__controls { display: flex; }
+  /* Slides share one grid cell, so the track is as tall as the tallest slide. */
+  .slider.is-enhanced .slider__track {
+    position: relative;
+    display: grid;
+    overflow: visible;
+    padding: 0;
+  }
+  .slider.is-enhanced .slider__slide {
+    grid-area: 1 / 1;
+    justify-self: center;
+    width: min(100%, 44em);
+    transition:
+      translate var(--duration-slow) var(--ease-smooth),
+      scale var(--duration-slow) var(--ease-smooth),
+      rotate var(--duration-slow) var(--ease-smooth),
+      opacity var(--duration-fast) ease-out;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+  .slider.is-enhanced .slider__slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    z-index: 2;
+    transition:
+      translate var(--duration-slow) var(--ease-smooth),
+      scale var(--duration-slow) var(--ease-elastic),
+      rotate var(--duration-slow) var(--ease-elastic),
+      opacity var(--duration-fast) ease-out,
+      visibility 0s;
+  }
+  /* Creative effect from the reference (LTR values; mirrored for RTL below). */
+  .slider.is-enhanced .slider__slide.is-prev { translate: -60% 15%; scale: 0.35; rotate: -15deg; visibility: visible; }
+  .slider.is-enhanced .slider__slide.is-next { translate: 50% 15%; scale: 0.6; rotate: 35deg; visibility: visible; }
+  :global([dir="rtl"]) .slider.is-enhanced .slider__slide.is-prev { translate: 60% 15%; rotate: 15deg; }
+  :global([dir="rtl"]) .slider.is-enhanced .slider__slide.is-next { translate: -50% 15%; rotate: -35deg; }
+  .slider.is-enhanced .slider__slide.is-peek { opacity: 0.35; }
+  .slider.is-enhanced .slider__slide:not(.is-active) .slider__info { opacity: 0; }
+  .slider.is-enhanced .slider__info { transition: opacity var(--duration-base) var(--ease-smooth); }
+  .slider.is-enhanced .slider__visual { display: block; width: 88%; margin-inline: auto; }
+
+  @media screen and (max-width: 767px) {
+    .bikes__note { display: none; }
+    .slider.is-enhanced .slider__track { touch-action: pan-y; }
+    .slider.is-enhanced .slider__slide.is-prev { translate: -80% 15%; }
+    .slider.is-enhanced .slider__slide.is-next { translate: 80% 15%; }
+    :global([dir="rtl"]) .slider.is-enhanced .slider__slide.is-prev { translate: 80% 15%; }
+    :global([dir="rtl"]) .slider.is-enhanced .slider__slide.is-next { translate: -80% 15%; }
+  }
+</style>

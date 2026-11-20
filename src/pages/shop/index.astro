@@ -1,0 +1,122 @@
+---
+/**
+ * Shop. Lists the template products (one per category for now — see content/CONTENT_TABLE.md).
+ * Filters + sort are progressive: without JS every product shows and the controls stay hidden.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import WaveMarquee from "../../components/home/WaveMarquee.astro";
+import ProductCard from "../../components/shop/ProductCard.astro";
+import Scribble from "../../components/ui/Scribble.astro";
+import { products, flatCategories } from "../../lib/content";
+
+const filterIds = [17, 40, 41, 23, 22, 24, 49, 48, 34];
+const flat = flatCategories();
+const filters = filterIds
+  .map((id) => flat.find((c) => c.id === id)!)
+  .map((c) => ({ id: c.id, label: c.name_he, count: products.filter((p) => p.categories_he.includes(c.name_he)).length }))
+  .filter((f) => f.count > 0);
+---
+<BaseLayout title="החנות" description="אופני הרים, חשמליים, ילדים ועיר, ציוד מיגון ואופניים יד 2 — סלאלום פרדס חנה.">
+  <section class="shop-hero" aria-labelledby="shop-title">
+    <div class="container shop-hero__inner">
+      <h1 id="shop-title" class="display display-xl" data-highlight-text>החנות</h1>
+      <p class="h4 shop-hero__sub" data-reveal>אופניים, אביזרים וציוד — מהמותגים המובילים בעולם</p>
+      <Scribble text={"דגם אחד מכל קטגוריה\nהשאר בדרך"} arrow="down" class="shop-hero__note" />
+    </div>
+  </section>
+  <WaveMarquee text="אופני הרים · חשמליים · ילדים · עיר · מיגון · יד 2 · " id="shop-wave" />
+
+  <section class="shop container" data-shop aria-label="מוצרים">
+    <div class="shop__controls" data-shop-controls hidden>
+      <div class="shop__filters" role="group" aria-label="סינון לפי קטגוריה">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">הכל <span>{products.length}</span></button>
+        {filters.map((f) => (
+          <button type="button" class="chip" data-filter={String(f.id)} aria-pressed="false">{f.label} <span>{f.count}</span></button>
+        ))}
+      </div>
+      <div class="shop__meta">
+        <p class="small" data-shop-count aria-live="polite">{products.length} מוצרים</p>
+        <label class="shop__sort small">
+          <span>מיון</span>
+          <select data-sort>
+            <option value="featured">מומלצים</option>
+            <option value="price-asc">מחיר: מהנמוך לגבוה</option>
+            <option value="price-desc">מחיר: מהגבוה לנמוך</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <ul role="list" class="shop__grid" data-shop-grid>
+      {products.map((p, i) => <ProductCard product={p} index={i} headingLevel="h2" />)}
+    </ul>
+    <p class="shop__empty lead" data-shop-empty hidden>אין כרגע מוצרים בקטגוריה הזו — כתבו לנו בווטסאפ ונמצא לכם.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .shop-hero {
+    padding-block: 9em 13em;
+    background: var(--color-brand);
+    text-align: center;
+  }
+  .shop-hero__inner { position: relative; display: grid; justify-items: center; gap: 0.5em; }
+  .shop-hero__sub { max-width: 24ch; }
+  .shop-hero__note { position: absolute; inset-inline-start: var(--grid-margin); bottom: -4em; }
+
+  .shop { padding-block: 13em 6em; }
+  .shop__controls { display: grid; gap: 1.25em; margin-bottom: 2em; }
+  .shop__filters { display: flex; flex-wrap: wrap; gap: 0.5em; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    min-height: var(--tap-min);
+    padding: 0.2em 1em 0.3em;
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    font-weight: var(--weight-medium);
+    transition:
+      background-color var(--duration-fast) var(--ease-smooth),
+      color var(--duration-fast) var(--ease-smooth),
+      scale var(--duration-elastic) var(--ease-elastic);
+  }
+  .chip span {
+    font-size: 0.8em;
+    padding: 0 0.5em;
+    border-radius: var(--radius-pill);
+    background: var(--color-bg);
+  }
+  .chip[aria-pressed="true"] { background: var(--color-ink); color: var(--color-surface); scale: 1.05; }
+  .chip[aria-pressed="true"] span { background: var(--color-brand); color: var(--color-ink); }
+  @media (hover: hover) { .chip:hover { scale: 1.05; } }
+  .shop__meta { display: flex; justify-content: space-between; align-items: center; gap: 1em; }
+  .shop__sort { display: inline-flex; align-items: center; gap: 0.5em; }
+  .shop__sort select {
+    min-height: var(--tap-min);
+    padding: 0 0.75em;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    font: inherit;
+    color: inherit;
+  }
+  .shop__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--grid-gutter);
+    padding: 0;
+  }
+  .shop__empty { text-align: center; padding-block: 3em; }
+  @media screen and (max-width: 991px) {
+    .shop__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media screen and (max-width: 479px) {
+    .shop-hero { padding-block: 7em 10em; }
+    .shop-hero__note { display: none; }
+    .shop { padding-top: 10em; }
+    .shop__grid { grid-template-columns: 1fr; }
+    .shop__filters { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--grid-margin)); padding-inline: var(--grid-margin); padding-bottom: 0.25em; }
+    .chip { flex: none; }
+  }
+</style>

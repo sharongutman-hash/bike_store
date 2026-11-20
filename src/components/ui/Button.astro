@@ -1,0 +1,117 @@
+---
+/**
+ * Two-part button from the reference: a round icon "cycle" + a pill label.
+ * Hover: the cycle springs across (elastic, 0.725s) and the pill gives way.
+ */
+import Icon, { type IconName } from "./Icon.astro";
+
+interface Props {
+  href?: string;
+  type?: "button" | "submit";
+  tone?: "ink" | "light" | "brand";
+  size?: "m" | "l";
+  icon?: IconName;
+  external?: boolean;
+  class?: string;
+  [key: `data-${string}`]: string | undefined;
+  "aria-label"?: string;
+}
+const {
+  href,
+  type = "button",
+  tone = "ink",
+  size = "m",
+  icon = "arrow",
+  external = false,
+  class: className,
+  ...rest
+} = Astro.props;
+const Tag = href ? "a" : "button";
+const linkProps = href
+  ? { href, ...(external ? { target: "_blank", rel: "noopener" } : {}) }
+  : { type };
+---
+<Tag class:list={["btn", `btn--${tone}`, `btn--${size}`, className]} {...linkProps} {...rest}>
+  <span class="btn__cycle" aria-hidden="true"><Icon name={icon} /></span>
+  <span class="btn__label"><slot /></span>
+</Tag>
+
+<style>
+  .btn {
+    --btn-bg: var(--color-ink);
+    --btn-fg: var(--color-surface);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125em;
+    min-height: var(--tap-min);
+    font-family: var(--font-body);
+    font-weight: var(--weight-medium);
+    font-size: 1.125em;
+    line-height: 1;
+    color: var(--btn-fg);
+    cursor: pointer;
+    isolation: isolate;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .btn--light { --btn-bg: var(--color-surface); --btn-fg: var(--color-ink); }
+  .btn--brand { --btn-bg: var(--color-brand); --btn-fg: var(--color-ink); }
+  .btn--l { font-size: 1.375em; }
+
+  .btn__cycle,
+  .btn__label {
+    background-color: var(--btn-bg);
+    transition:
+      translate var(--duration-elastic) var(--ease-elastic),
+      rotate var(--duration-elastic) var(--ease-elastic),
+      scale var(--duration-base) var(--ease-default),
+      box-shadow var(--duration-base) var(--ease-smooth);
+  }
+  .btn__cycle {
+    display: grid;
+    place-items: center;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: var(--radius-round);
+    font-size: 0.9em;
+  }
+  .btn__label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5em;
+    padding: 0.35em 1.1em 0.45em;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+
+  @media (hover: hover) {
+    .btn:hover .btn__cycle {
+      translate: -0.25em 0;
+      rotate: -45deg;
+      scale: 1.08;
+    }
+    .btn:hover .btn__label {
+      translate: 0.25em 0;
+      box-shadow: var(--shadow-card);
+    }
+    :global([dir="rtl"]) .btn:hover .btn__cycle { translate: 0.25em 0; rotate: 45deg; }
+    :global([dir="rtl"]) .btn:hover .btn__label { translate: -0.25em 0; }
+  }
+  .btn:active .btn__cycle,
+  .btn:active .btn__label {
+    scale: 0.94;
+    transition-duration: var(--duration-instant);
+  }
+  .btn:focus-visible {
+    outline: none;
+  }
+  .btn:focus-visible .btn__label,
+  .btn:focus-visible .btn__cycle {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+  :global(.on-dark) .btn:focus-visible .btn__label,
+  :global(.on-dark) .btn:focus-visible .btn__cycle {
+    outline-color: var(--color-focus-on-dark);
+  }
+</style>
