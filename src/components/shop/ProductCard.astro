@@ -6,7 +6,7 @@
 import ProductImage from "../ui/ProductImage.astro";
 import Price from "../ui/Price.astro";
 import Icon from "../ui/Icon.astro";
-import { cutout, displayName, flatCategories, productHref, currentPrice, typePrefix, type Product } from "../../lib/content";
+import { cutout, displayName, productHref, currentPrice, typePrefix, type Product } from "../../lib/content";
 
 interface Props {
   product: Product;
@@ -14,11 +14,7 @@ interface Props {
   headingLevel?: "h2" | "h3";
 }
 const { product, index = 0, headingLevel = "h3" } = Astro.props;
-const flat = flatCategories();
-const catIds = product.categories_he
-  .map((name) => flat.find((c) => c.name_he === name)?.id)
-  .filter(Boolean)
-  .join(",");
+const catIds = product.category_ids.join(",");
 const H = headingLevel;
 const isCutout = Boolean(cutout(product));
 ---

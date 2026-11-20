@@ -41,7 +41,10 @@ const bubbles = bubbleKeys
   .filter((k) => product.specs[k] && product.specs[k].length <= 18)
   .slice(0, 3)
   .map((k) => ({ label: specLabels[k], value: product.specs[k] }));
-const specRows = Object.entries(product.specs).map(([k, v]) => ({ label: specLabels[k] ?? k, value: v }));
+const specRows = [
+  ...Object.entries(product.options ?? {}).map(([k, v]) => ({ label: `${k} (לבחירה)`, value: v.join(" · ") })),
+  ...Object.entries(product.specs).map(([k, v]) => ({ label: specLabels[k] ?? k, value: v })),
+];
 // The scraped description is broken mid-sentence; rejoin lines into sentences/paragraphs.
 const paragraphs = product.description_he
   .split("\n")
@@ -58,7 +61,10 @@ const pageUrl = new URL(productHref(product), Astro.site).href;
 const orderText = `היי סלאלום, אני מתעניין/ת ב-${name} (${pageUrl})`;
 const related = products
   .filter((p) => p.id !== product.id)
-  .sort((a, b) => Number(b.categories_he.some((c) => product.categories_he.includes(c) && c !== "אופניים")) - Number(a.categories_he.some((c) => product.categories_he.includes(c) && c !== "אופניים")))
+  // Most shared categories first (same leaf category beats same department), in-stock first.
+  .map((p) => ({ p, score: p.category_ids.filter((id) => product.category_ids.includes(id)).length * 2 + Number(p.in_stock) }))
+  .sort((a, b) => b.score - a.score)
+  .map(({ p }) => p)
   .slice(0, 3);
 
 const jsonLd = {
@@ -68,7 +74,7 @@ const jsonLd = {
   brand: product.brand ? { "@type": "Brand", name: product.brand } : undefined,
   image: product.images.map((i) => i.src),
   description: teaser(product, 300),
-  offers: {
+  offers: product.price_on_request ? undefined : {
     "@type": "Offer",
     priceCurrency: "ILS",
     price: currentPrice(product),

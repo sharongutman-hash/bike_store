@@ -1,39 +1,49 @@
 ---
 /**
- * Shop. Lists the template products (one per category for now — see content/CONTENT_TABLE.md).
+ * Shop. Lists every product from every source (lib/content.ts), filtered by department and
+ * sub-category and shown PAGE_SIZE at a time with a "show more" button.
  * Filters + sort are progressive: without JS every product shows and the controls stay hidden.
  */
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import WaveMarquee from "../../components/home/WaveMarquee.astro";
 import ProductCard from "../../components/shop/ProductCard.astro";
 import Scribble from "../../components/ui/Scribble.astro";
-import { products, flatCategories } from "../../lib/content";
+import { products, categories } from "../../lib/content";
 
-const filterIds = [17, 40, 41, 23, 22, 24, 49, 48, 34];
-const flat = flatCategories();
-const filters = filterIds
-  .map((id) => flat.find((c) => c.id === id)!)
-  .map((c) => ({ id: c.id, label: c.name_he, count: products.filter((p) => p.categories_he.includes(c.name_he)).length }))
-  .filter((f) => f.count > 0);
+const PAGE_SIZE = 24;
+// Department chips, then a second row with the chosen department's sub-categories.
+const departments = categories.filter((c) => c.product_count > 0);
+const descendants = (c: (typeof categories)[number]): (typeof categories)[number][] =>
+  c.children.flatMap((child) => [child, ...descendants(child)]);
+const subRows = departments
+  .map((d) => ({ id: d.id, subs: descendants(d).filter((c) => c.product_count > 0) }))
+  .filter((r) => r.subs.length > 0);
 ---
 <BaseLayout title="החנות" description="אופני הרים, חשמליים, ילדים ועיר, ציוד מיגון ואופניים יד 2 — סלאלום פרדס חנה.">
   <section class="shop-hero" aria-labelledby="shop-title">
     <div class="container shop-hero__inner">
       <h1 id="shop-title" class="display display-xl" data-highlight-text>החנות</h1>
       <p class="h4 shop-hero__sub" data-reveal>אופניים, אביזרים וציוד — מהמותגים המובילים בעולם</p>
-      <Scribble text={"דגם אחד מכל קטגוריה\nהשאר בדרך"} arrow="down" class="shop-hero__note" />
+      <Scribble text={"כל המחלקות\nבמקום אחד"} arrow="down" class="shop-hero__note" />
     </div>
   </section>
-  <WaveMarquee text="אופני הרים · חשמליים · ילדים · עיר · מיגון · יד 2 · " id="shop-wave" />
+  <WaveMarquee text="אופניים · קסדות · אביזרים · ביגוד · חלקים · קורקינטים · " id="shop-wave" />
 
-  <section class="shop container" data-shop aria-label="מוצרים">
+  <section class="shop container" data-shop data-page-size={PAGE_SIZE} aria-label="מוצרים">
     <div class="shop__controls" data-shop-controls hidden>
-      <div class="shop__filters" role="group" aria-label="סינון לפי קטגוריה">
+      <div class="shop__filters" role="group" aria-label="סינון לפי מחלקה">
         <button type="button" class="chip" data-filter="all" aria-pressed="true">הכל <span>{products.length}</span></button>
-        {filters.map((f) => (
-          <button type="button" class="chip" data-filter={String(f.id)} aria-pressed="false">{f.label} <span>{f.count}</span></button>
+        {departments.map((d) => (
+          <button type="button" class="chip" data-filter={String(d.id)} aria-pressed="false">{d.name_he} <span>{d.product_count}</span></button>
         ))}
       </div>
+      {subRows.map((row) => (
+        <div class="shop__filters shop__filters--sub" role="group" aria-label="סינון לפי קטגוריה" data-sub-for={String(row.id)} hidden>
+          {row.subs.map((c) => (
+            <button type="button" class="chip chip--sub" data-filter={String(c.id)} data-parent={String(row.id)} aria-pressed="false">{c.name_he} <span>{c.product_count}</span></button>
+          ))}
+        </div>
+      ))}
       <div class="shop__meta">
         <p class="small" data-shop-count aria-live="polite">{products.length} מוצרים</p>
         <label class="shop__sort small">
@@ -50,6 +60,9 @@ const filters = filterIds
     <ul role="list" class="shop__grid" data-shop-grid>
       {products.map((p, i) => <ProductCard product={p} index={i} headingLevel="h2" />)}
     </ul>
+    <div class="shop__more" data-shop-more hidden>
+      <button type="button" class="btn-more" data-shop-more-btn>להציג עוד</button>
+    </div>
     <p class="shop__empty lead" data-shop-empty hidden>אין כרגע מוצרים בקטגוריה הזו — כתבו לנו בווטסאפ ונמצא לכם.</p>
   </section>
 </BaseLayout>
@@ -107,6 +120,18 @@ const filters = filterIds
     gap: var(--grid-gutter);
     padding: 0;
   }
+  .shop__filters--sub { padding-inline-start: 0.75em; border-inline-start: 2px solid var(--color-line); }
+  .chip--sub { min-height: 2.5em; font-size: 0.9em; }
+  .shop__more { display: grid; place-items: center; margin-top: 3em; }
+  .btn-more {
+    min-height: var(--tap-min);
+    padding: 0.4em 1.75em 0.5em;
+    border-radius: var(--radius-pill);
+    background: var(--color-ink);
+    color: var(--color-surface);
+    font-weight: var(--weight-medium);
+  }
+  .btn-more:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
   .shop__empty { text-align: center; padding-block: 3em; }
   @media screen and (max-width: 991px) {
     .shop__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

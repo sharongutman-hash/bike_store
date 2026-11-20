@@ -17,6 +17,27 @@ npm run cutouts   # re-make transparent product cut-outs after adding products
 | `/shop/` | `src/pages/shop/index.astro` | Filter chips and sort, synced to `?cat=<id>&sort=` |
 | `/product/<slug>/` | `src/pages/product/[slug].astro` | One page per product in `content/products.json`. Includes the gallery, WhatsApp ordering, the spec table and JSON-LD |
 
+## Product sources
+
+The shop merges several catalogs into one category tree.
+
+| File | What |
+|---|---|
+| `content/sources/taxonomy.json` | The shared category tree. Ids under 1000 are the original site's; new categories are 1000+. |
+| `content/products.json` | The original site's products (always in git). The home page features these. |
+| `content/sources/<name>/category-map.json` | How a source's categories map onto the tree: by category path first, then by words in the product name. |
+| `content/sources/<name>/products.json` | The imported products. Generated, git-ignored. |
+| `content/images/sources/<name>/` | Their photos, up to 3 per product, resized to 1200px webp. Generated, git-ignored. |
+
+To import or refresh pedalim.co.il, put `pedalim_catalog.zip` in the repo folder (git ignores zips), then:
+
+```bash
+ditto -x -k pedalim_catalog.zip .cache/pedalim
+npm run import:pedalim
+```
+
+Without the generated files the site still builds, with the original products only. To add another source, add its `category-map.json` and an import script that writes the same product shape.
+
 ## Structure
 
 ```

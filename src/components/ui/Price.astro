@@ -9,14 +9,16 @@ const { regular, sale } = product.price;
 const off = discountPercent(product);
 ---
 <p class:list={["price", `price--${size}`]}>
-  {sale ? (
+  {product.price_on_request ? (
+    <span class="price__ask">מחיר בחנות</span>
+  ) : sale ? (
     <>
       <span class="price__now"><span class="sr-only">מחיר מבצע: </span>{formatPrice(sale)}</span>
       <del class="price__was"><span class="sr-only">במקום </span>{formatPrice(regular)}</del>
       <span class="price__off">−{off}%</span>
     </>
   ) : (
-    <span class="price__now">{formatPrice(regular)}</span>
+    <span class="price__now">{product.price.from && <span class="price__from">החל מ-</span>}{formatPrice(regular)}</span>
   )}
 </p>
 
@@ -31,6 +33,8 @@ const off = discountPercent(product);
     line-height: 1;
   }
   .price__now { font-size: 2em; }
+  .price__from { font-size: 0.5em; margin-inline-end: 0.2em; }
+  .price__ask { font-size: 1.5em; }
   .price--l .price__now { font-size: 3.5em; }
   .price__was {
     font-family: var(--font-body);

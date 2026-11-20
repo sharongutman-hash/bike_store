@@ -2,3 +2,9 @@ node_modules/
 dist/
 .astro/
 .DS_Store
+
+# Imported catalogs: raw zips, their unpacked copies and the generated photos
+*.zip
+.cache/
+content/images/sources/
+content/sources/*/products.json
