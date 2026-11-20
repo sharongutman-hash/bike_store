@@ -31,6 +31,13 @@ const fullTitle = title ? `${title} | ${site.business.name_he}` : `${site.busine
       (function () {
         var d = document.documentElement;
         d.classList.add("js");
+        // Palette: ?palette=cream|orange wins, then the visitor's last choice.
+        try {
+          var q = new URLSearchParams(location.search).get("palette");
+          var p = q || localStorage.getItem("palette");
+          if (q) localStorage.setItem("palette", q);
+          if (p === "cream") d.dataset.palette = "cream";
+        } catch (e) {}
         if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           d.classList.add("motion-ok");
           setTimeout(function () {

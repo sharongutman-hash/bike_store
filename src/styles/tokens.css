@@ -22,6 +22,12 @@
   --color-focus-on-dark: #fbb574;
   --color-success: #2f7d32;
 
+  /* Large background surfaces. Components use these instead of the brand colours
+     directly, so a palette can swap them without touching the accents. */
+  --surface-bold: var(--color-brand);      /* hero, shop hero, footer card, product stage */
+  --surface-soft: var(--color-brand-soft); /* category, compare and product-card panels */
+  --on-bold-accent: var(--color-surface);  /* large display text and the ring on --surface-bold */
+
   /* ---------- Fluid scale (Osmo scaling system, as used by the reference) ----------
      1em = 16px at the design width; it scales with the viewport between min and max. */
   --size-unit: 16;
@@ -138,4 +144,15 @@
     --duration-reveal: 0.01s;
     --stagger: 0s;
   }
+}
+
+/* ---------- Palette: cream ----------
+   Same brand, less orange: large surfaces become cream and sand, and orange is
+   kept for accents (buttons, wave band, stars, prices, highlights).
+   Set with <html data-palette="cream">; the header switch toggles it. */
+:root[data-palette="cream"] {
+  --color-bg: #fbf7f1;
+  --surface-bold: #f2e6d6;
+  --surface-soft: #fde7cf;
+  --on-bold-accent: var(--color-brand-text); /* white on sand is unreadable */
 }

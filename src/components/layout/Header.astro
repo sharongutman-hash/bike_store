@@ -38,6 +38,10 @@ const nav = [
     </nav>
 
     <div class="header__end" data-load-nav>
+      <button class="header__palette" type="button" aria-pressed="false" data-palette-toggle>
+        <span class="header__swatch" aria-hidden="true"></span>
+        <span class="header__palette-label">ערכת צבע</span>
+      </button>
       <a class="header__logo" href="/" aria-label="סלאלום פרדס חנה — דף הבית">
         <span class="header__logo-text">סלאלום</span>
       </a>
@@ -65,7 +69,21 @@ const nav = [
 </header>
 
 <script>
-  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const paletteBtn = document.querySelector<HTMLButtonElement>("[data-palette-toggle]");
+  if (paletteBtn) {
+    const root = document.documentElement;
+    const sync = () => paletteBtn.setAttribute("aria-pressed", String(root.dataset.palette === "cream"));
+    sync();
+    paletteBtn.addEventListener("click", () => {
+      const cream = root.dataset.palette !== "cream";
+      if (cream) root.dataset.palette = "cream";
+      else delete root.dataset.palette;
+      try { localStorage.setItem("palette", cream ? "cream" : "orange"); } catch {}
+      sync();
+    });
+  }
+
+  const toggle =document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
   const menu = document.querySelector<HTMLElement>("[data-menu]");
   if (toggle && menu) {
     const set = (open: boolean) => {
@@ -135,6 +153,34 @@ const nav = [
     align-items: center;
     gap: 0.75em;
   }
+  .header__palette {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    min-height: var(--tap-min);
+    padding: 0.2em 0.5em 0.3em 0.9em;
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    font-weight: var(--weight-medium);
+    font-size: 1em;
+  }
+  /* Half orange, half cream: shows the palette the button switches to. */
+  .header__swatch {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: var(--radius-round);
+    border: 1px solid var(--color-line);
+    background: linear-gradient(90deg, #f2e6d6 50%, var(--color-brand) 50%);
+  }
+  .header__palette[aria-pressed="true"] .header__swatch {
+    background: linear-gradient(90deg, var(--color-brand) 50%, #f2e6d6 50%);
+  }
+  .header__palette:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+  @media screen and (max-width: 479px) {
+    .header__palette-label { display: none; }
+    .header__palette { padding: 0; width: var(--tap-min); justify-content: center; }
+  }
+
   .header__logo {
     display: none;
     font-family: var(--font-display);
