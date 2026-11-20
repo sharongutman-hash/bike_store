@@ -9,8 +9,6 @@ import StatBubble from "../ui/StatBubble.astro";
 import Scribble from "../ui/Scribble.astro";
 import ProductImage from "../ui/ProductImage.astro";
 import Price from "../ui/Price.astro";
-import { Image } from "astro:assets";
-import logo from "../../../content/images/site/logo.png";
 import { getProduct, productHref, displayName, site, path } from "../../lib/content";
 import { hero, heroFacts } from "../../data/copy";
 
@@ -19,7 +17,7 @@ const product = getProduct(1186);
 <section class="hero" data-hero aria-labelledby="hero-title">
   <div class="hero__top container">
     <h1 id="hero-title" class="hero__wordmark" data-hero-wordmark>
-      <Image src={logo} alt="" class="hero__logo" width={170} loading="eager" fetchpriority="high" />
+      <img src={path("/logo.svg")} alt="" class="hero__logo" width="170" height="90" fetchpriority="high" />
       <span class="sr-only">{site.business.name_he} — {site.business.tagline_he}</span>
     </h1>
     <div class="hero__cta" data-hero-cta>
@@ -86,10 +84,12 @@ const product = getProduct(1186);
     letter-spacing: -0.015em;
     margin-top: 0.08em;
   }
+  /* Same height as the old "סלאלום" wordmark: the h1 font-size is the wordmark size. */
   .hero__logo {
     display: block;
-    width: min(88vw, 34em);
-    height: auto;
+    height: 0.75em;
+    width: auto;
+    max-width: 88vw;
     margin-top: 0.5em;
   }
   .hero__cta { margin-top: 1.25em; }
