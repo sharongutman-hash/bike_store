@@ -6,7 +6,7 @@ import Button from "../ui/Button.astro";
 import CircleButton from "../ui/CircleButton.astro";
 import Icon from "../ui/Icon.astro";
 import ProductImage from "../ui/ProductImage.astro";
-import { site, getProduct, whatsappHref, telHref } from "../../lib/content";
+import { site, getProduct, whatsappHref, telHref, path } from "../../lib/content";
 
 const featured = getProduct(1186);
 const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.business.name_he} ${site.contact.address_he}`)}`;
@@ -17,7 +17,7 @@ const accessibilityHref = site.pages.find((p) => p.title_he === "הצהרת נג
 ---
 <footer class="footer" id="contact">
   <div class="footer__grid container">
-    <a class="footer__card" href="/shop/" data-reveal>
+    <a class="footer__card" href={path("/shop/")} data-reveal>
       <p class="footer__card-title display display--bold">הכל<br />לאופניים<br />במקום אחד</p>
       <ProductImage product={featured} sizes="(max-width: 767px) 80vw, 30vw" class="footer__card-img" />
       <span class="footer__card-cta"><Icon name="arrow" /> לכל האופניים</span>
@@ -51,10 +51,10 @@ const accessibilityHref = site.pages.find((p) => p.title_he === "הצהרת נג
         <section aria-labelledby="f-links">
           <h3 id="f-links" class="footer__label"><Icon name="arrow" /> ניווט מהיר</h3>
           <ul role="list" class="footer__list">
-            <li><a href="/shop/">אופניים</a></li>
-            <li><a href="/shop/?cat=48">אביזרים ומיגון</a></li>
-            <li><a href="/#workshop">סדנת תיקונים</a></li>
-            <li><a href="/shop/?cat=34">אופניים יד 2</a></li>
+            <li><a href={path("/shop/")}>אופניים</a></li>
+            <li><a href={path("/shop/?cat=48")}>אביזרים ומיגון</a></li>
+            <li><a href={path("/#workshop")}>סדנת תיקונים</a></li>
+            <li><a href={path("/shop/?cat=34")}>אופניים יד 2</a></li>
             <li><a href={accessibilityHref}>הצהרת נגישות</a></li>
           </ul>
         </section>

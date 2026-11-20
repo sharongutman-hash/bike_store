@@ -205,3 +205,16 @@ html.motion-ok [data-highlight-text] {
 html.motion-ok [data-pop] {
   opacity: 0;
 }
+
+/* Design-preview builds only (GitHub Pages): a fixed strip so nobody mistakes it for the live store. */
+.preview-banner {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 1000;
+  margin: 0;
+  padding: 0.5em 1em;
+  background: var(--color-ink);
+  color: var(--color-surface);
+  font-size: var(--text-small, 0.875em);
+  text-align: center;
+}

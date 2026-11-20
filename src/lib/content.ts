@@ -47,6 +47,12 @@ export type Category = {
 
 export const site = siteJson;
 
+/** Site-internal link. Adds the base path when the site is served from a sub-folder
+ *  (GitHub Pages: /bike_store/); on the real domain the base is "/" and this is a no-op. */
+export function path(p: string): string {
+  return import.meta.env.BASE_URL.replace(/\/$/, "") + p;
+}
+
 /* ---------- category tree (shared by every source) ---------- */
 type TaxonomyEntry = { id: number; parent: number | null; name_he: string; name_en: string };
 const taxonomy = (taxonomyJson as { categories: TaxonomyEntry[] }).categories;
@@ -82,7 +88,7 @@ function buildTree(parent: number | null): Category[] {
       id: c.id,
       name_he: c.name_he,
       name_en: c.name_en,
-      url: `/shop/?cat=${c.id}`,
+      url: path(`/shop/?cat=${c.id}`),
       product_count: products.filter((p) => p.category_ids.includes(c.id)).length,
       representative_product_id: legacyRep.get(c.id) ?? null,
       children: buildTree(c.id),
@@ -139,7 +145,7 @@ export function slugify(product: Product): string {
 }
 
 export function productHref(product: Product): string {
-  return `/product/${slugify(product)}/`;
+  return path(`/product/${slugify(product)}/`);
 }
 
 /** Latin part after a Hebrew type prefix, when it names the product well enough on its own

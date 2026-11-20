@@ -14,7 +14,7 @@ import WaveMarquee from "../../components/home/WaveMarquee.astro";
 import ProductCard from "../../components/shop/ProductCard.astro";
 import {
   products, slugify, displayName, typePrefix, contentImage, cutout, currentPrice,
-  specLabels, whatsappHref, telHref, site, flatCategories, productHref, teaser, type Product,
+  specLabels, whatsappHref, telHref, site, flatCategories, productHref, teaser, path, type Product,
 } from "../../lib/content";
 
 export function getStaticPaths() {
@@ -29,10 +29,10 @@ const cut = cutout(product);
 const flat = flatCategories();
 const leaf = flat.find((c) => c.id === product.representing_category.id)!;
 const crumbs = [
-  { label: "דף הבית", href: "/" },
-  { label: "החנות", href: "/shop/" },
-  ...(leaf.parent && leaf.parent.id !== 21 ? [{ label: leaf.parent.name_he, href: `/shop/?cat=${leaf.parent.id}` }] : []),
-  { label: leaf.name_he, href: `/shop/?cat=${leaf.id}` },
+  { label: "דף הבית", href: path("/") },
+  { label: "החנות", href: path("/shop/") },
+  ...(leaf.parent && leaf.parent.id !== 21 ? [{ label: leaf.parent.name_he, href: path(`/shop/?cat=${leaf.parent.id}`) }] : []),
+  { label: leaf.name_he, href: path(`/shop/?cat=${leaf.id}`) },
 ];
 
 // Up to three short spec values become bubbles; everything goes in the table.

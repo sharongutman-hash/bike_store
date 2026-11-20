@@ -9,7 +9,7 @@ import WheelBadge from "../ui/WheelBadge.astro";
 import ProductImage from "../ui/ProductImage.astro";
 import Price from "../ui/Price.astro";
 import Scribble from "../ui/Scribble.astro";
-import { flatCategories, getProduct, productHref, displayName } from "../../lib/content";
+import { flatCategories, getProduct, productHref, displayName, path } from "../../lib/content";
 import { categoryPitch, stage } from "../../data/copy";
 
 const ids = [40, 41, 23, 22, 24, 48];
@@ -48,7 +48,7 @@ const steps = ids.map((id) => {
                 <span>{displayName(product)}</span>
                 <Price product={product} />
               </a>
-              <Button href={`/shop/?cat=${cat.id}`} tone="ink">לכל ה{cat.name_he.replace(/^אופני /, "")}</Button>
+              <Button href={path(`/shop/?cat=${cat.id}`)} tone="ink">לכל ה{cat.name_he.replace(/^אופני /, "")}</Button>
             </article>
           </li>
         ))}

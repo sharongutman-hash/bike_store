@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
-import { site } from "../lib/content";
+import { site, path } from "../lib/content";
 
 interface Props {
   title?: string;
@@ -15,6 +15,8 @@ const {
   headerTone = "brand",
 } = Astro.props;
 const fullTitle = title ? `${title} | ${site.business.name_he}` : `${site.business.name_he} | ${site.business.tagline_he}`;
+// Served from a sub-folder (GitHub Pages) = design preview, not the store's live site.
+const preview = import.meta.env.BASE_URL !== "/";
 ---
 <!doctype html>
 <html lang="he" dir="rtl">
@@ -23,8 +25,9 @@ const fullTitle = title ? `${title} | ${site.business.name_he}` : `${site.busine
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {preview && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#f77c14" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={path("/favicon.svg")} type="image/svg+xml" />
     <!-- Motion gate: hide entrance states only when JS runs and motion is allowed.
          If the motion script has not started within 3s, show everything. -->
     <script is:inline>
@@ -48,6 +51,11 @@ const fullTitle = title ? `${title} | ${site.business.name_he}` : `${site.busine
     </script>
   </head>
   <body>
+    {preview && (
+      <p class="preview-banner" role="note">
+        תצוגה מקדימה של עיצוב האתר החדש · זה אינו האתר הרשמי של החנות
+      </p>
+    )}
     <a class="skip-link" href="#main">דלגו לתוכן</a>
     <Header tone={headerTone} />
     <main id="main">

@@ -9,7 +9,7 @@ import StatBubble from "../ui/StatBubble.astro";
 import Scribble from "../ui/Scribble.astro";
 import ProductImage from "../ui/ProductImage.astro";
 import Price from "../ui/Price.astro";
-import { getProduct, productHref, displayName, site } from "../../lib/content";
+import { getProduct, productHref, displayName, site, path } from "../../lib/content";
 import { hero, heroFacts } from "../../data/copy";
 
 const product = getProduct(1186);
@@ -21,7 +21,7 @@ const product = getProduct(1186);
       <span class="sr-only">{site.business.name_he} — {site.business.tagline_he}</span>
     </h1>
     <div class="hero__cta" data-hero-cta>
-      <Button href="/shop/" size="l">לכל האופניים</Button>
+      <Button href={path("/shop/")} size="l">לכל האופניים</Button>
     </div>
   </div>
 
