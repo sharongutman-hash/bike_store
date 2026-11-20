@@ -197,6 +197,8 @@ const nav = [
     border-radius: var(--radius-l);
     background: var(--color-surface);
   }
+  /* The home page hero already shows the logo large. */
+  :global(body:has([data-hero])) .header__logo { display: none; }
   .header__logo:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
   @media screen and (max-width: 479px) {
     .header__logo img { width: 4.75em; }
