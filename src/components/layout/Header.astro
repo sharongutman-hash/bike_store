@@ -1,25 +1,21 @@
 ---
 /**
- * Header (reference: socials on one side, small nav pills in the middle,
- * "Shop all" on the other). Sits over the page; a menu panel opens on mobile.
+ * Header (reference: socials on one side, small nav pills in the middle).
+ * Fixed to the top. Once the page scrolls it becomes a solid bar with the logo
+ * and the nav. On the home page the logo and nav start in the hero (under the
+ * big logo) and only appear in the bar after the hero's nav scrolls away.
+ * A menu panel replaces the nav on smaller screens.
  */
 import CircleButton from "../ui/CircleButton.astro";
-import Button from "../ui/Button.astro";
 import Icon from "../ui/Icon.astro";
 import { site, whatsappHref, path } from "../../lib/content";
+import { mainNav } from "../../data/nav";
 
 interface Props {
   tone?: "brand" | "cream";
 }
 const { tone = "brand" } = Astro.props;
-const nav = [
-  { label: "אופניים", href: path("/shop/") },
-  { label: "חשמליים", href: path("/shop/?cat=23") },
-  { label: "ילדים", href: path("/shop/?cat=22") },
-  { label: "סדנת תיקונים", href: path("/#workshop") },
-  { label: "יד 2", href: path("/shop/?cat=34") },
-  { label: "צרו קשר", href: "#contact" },
-];
+const nav = mainNav;
 ---
 <header class:list={["header", `header--${tone}`]} data-header>
   <div class="header__inner container">
@@ -45,7 +41,6 @@ const nav = [
         <span class="header__swatch" aria-hidden="true"></span>
         <span class="header__palette-label">ערכת צבע</span>
       </button>
-      <Button href={path("/shop/")} tone="ink" class="header__shop">לחנות</Button>
       <button class="header__menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
         <Icon name="menu" />
         <span class="sr-only">תפריט</span>
@@ -83,7 +78,21 @@ const nav = [
     });
   }
 
-  const toggle =document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const header = document.querySelector<HTMLElement>("[data-header]");
+  const heroNav = document.querySelector<HTMLElement>("[data-hero-nav]");
+  if (header) {
+    const setStuck = (on: boolean) => header.classList.toggle("is-stuck", on);
+    if (heroNav && "IntersectionObserver" in window) {
+      // Home: the bar takes over once the pills under the logo have scrolled out of view.
+      new IntersectionObserver(([e]) => setStuck(!e.isIntersecting && e.boundingClientRect.top < 0)).observe(heroNav);
+    } else {
+      const onScroll = () => setStuck(window.scrollY > 24);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+  }
+
+  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
   const menu = document.querySelector<HTMLElement>("[data-menu]");
   if (toggle && menu) {
     const set = (open: boolean) => {
@@ -106,10 +115,39 @@ const nav = [
 
 <style>
   .header {
-    position: absolute;
+    position: fixed;
     inset: 0 0 auto;
     z-index: var(--z-header);
     padding-block: 1.25em;
+    transition:
+      padding var(--duration-base) var(--ease-smooth),
+      background-color var(--duration-base) var(--ease-smooth),
+      box-shadow var(--duration-base) var(--ease-smooth);
+  }
+  .header.is-stuck {
+    padding-block: 0.5em;
+    background: var(--color-bg);
+    box-shadow: 0 0.25em 1.5em rgb(26 20 16 / 0.12);
+  }
+  .header.is-stuck .header__social :global(.cbtn),
+  .header.is-stuck .header__link { background: var(--color-ink-tint); }
+  @media (hover: hover) {
+    .header.is-stuck .header__link:hover { background: var(--color-ink); color: var(--color-surface); }
+  }
+
+  /* Home page, before the bar takes over: logo and nav live in the hero. */
+  :global(body:has([data-hero-nav])) .header:not(.is-stuck) .header__logo,
+  :global(body:has([data-hero-nav])) .header:not(.is-stuck) .header__nav {
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 -0.5em;
+  }
+  .header__logo,
+  .header__nav {
+    transition:
+      opacity var(--duration-base) var(--ease-smooth),
+      translate var(--duration-base) var(--ease-smooth),
+      visibility var(--duration-base);
   }
   .header__inner {
     display: grid;
@@ -189,14 +227,13 @@ const nav = [
     border-radius: var(--radius-s, 0.5em);
   }
   .header__logo img { display: block; width: 6em; height: auto; }
+  .header.is-stuck .header__logo img { width: 5em; }
   /* Orange plate on an orange header: sit it on a white chip so it stays legible. */
-  :root:not([data-palette="cream"]) .header--brand .header__logo {
+  :root:not([data-palette="cream"]) .header--brand:not(.is-stuck) .header__logo {
     padding: 0.3em 0.6em;
     border-radius: var(--radius-l);
     background: var(--color-surface);
   }
-  /* The home page hero already shows the logo large. */
-  :global(body:has([data-hero])) .header__logo { display: none; }
   .header__logo:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
   @media screen and (max-width: 479px) {
     .header__logo img { width: 4.75em; }
@@ -247,7 +284,6 @@ const nav = [
     .header__menu-btn { display: inline-grid; }
   }
   @media screen and (max-width: 479px) {
-    .header__social :global(.cbtn:nth-child(3)) { display: none; }
-    .header__shop { display: none; }
+    .header__social :global(.cbtn:last-child) { display: none; }
   }
 </style>

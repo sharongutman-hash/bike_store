@@ -4,13 +4,13 @@
  * fact bubbles + hand-written note on one side, condensed statement on the other).
  * Load sequence and idle float are in scripts/motion/hero.ts.
  */
-import Button from "../ui/Button.astro";
 import StatBubble from "../ui/StatBubble.astro";
 import Scribble from "../ui/Scribble.astro";
 import ProductImage from "../ui/ProductImage.astro";
 import Price from "../ui/Price.astro";
 import { getProduct, productHref, displayName, site, path } from "../../lib/content";
 import { hero, heroFacts } from "../../data/copy";
+import { mainNav } from "../../data/nav";
 
 const product = getProduct(1186);
 ---
@@ -20,9 +20,13 @@ const product = getProduct(1186);
       <img src={path("/logo.svg")} alt="" class="hero__logo" width="170" height="90" fetchpriority="high" />
       <span class="sr-only">{site.business.name_he} — {site.business.tagline_he}</span>
     </h1>
-    <div class="hero__cta" data-hero-cta>
-      <Button href={path("/shop/")} size="l">לכל האופניים</Button>
-    </div>
+    <nav class="hero__nav" aria-label="ניווט ראשי" data-hero-nav data-hero-cta>
+      <ul role="list">
+        {mainNav.map((item) => (
+          <li><a class="hero__navlink" href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
   </div>
 
   <div class="hero__stage container">
@@ -92,7 +96,36 @@ const product = getProduct(1186);
     max-width: 88vw;
     margin-top: 0.5em;
   }
-  .hero__cta { margin-top: 1.25em; }
+  /* The site nav, under the logo. The header bar takes it over on scroll. */
+  .hero__nav { margin-top: 1.5em; }
+  .hero__nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.375em;
+  }
+  /* Styled like the old "לכל המוצרים" button: black pills, white text. */
+  .hero__navlink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5em;
+    padding: 0.35em 1.1em 0.45em;
+    border-radius: var(--radius-pill);
+    background: var(--color-ink);
+    color: var(--color-surface);
+    font-weight: var(--weight-medium);
+    font-size: 1.125em;
+    line-height: 1;
+    white-space: nowrap;
+    transition:
+      translate var(--duration-base) var(--ease-default),
+      box-shadow var(--duration-base) var(--ease-smooth);
+  }
+  @media (hover: hover) {
+    .hero__navlink:hover { translate: 0 -0.15em; box-shadow: var(--shadow-card); }
+  }
+  .hero__navlink:active { scale: 0.96; }
+  .hero__navlink:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
 
   .hero__stage {
     position: relative;

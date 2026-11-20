@@ -2,6 +2,7 @@
 /**
  * Two-part button from the reference: a round icon "cycle" + a pill label.
  * Hover: the cycle springs across (elastic, 0.725s) and the pill gives way.
+ * icon={false} drops the cycle and leaves a single pill.
  */
 import Icon, { type IconName } from "./Icon.astro";
 
@@ -10,7 +11,7 @@ interface Props {
   type?: "button" | "submit";
   tone?: "ink" | "light" | "brand";
   size?: "m" | "l";
-  icon?: IconName;
+  icon?: IconName | false;
   external?: boolean;
   class?: string;
   [key: `data-${string}`]: string | undefined;
@@ -31,8 +32,8 @@ const linkProps = href
   ? { href, ...(external ? { target: "_blank", rel: "noopener" } : {}) }
   : { type };
 ---
-<Tag class:list={["btn", `btn--${tone}`, `btn--${size}`, className]} {...linkProps} {...rest}>
-  <span class="btn__cycle" aria-hidden="true"><Icon name={icon} /></span>
+<Tag class:list={["btn", `btn--${tone}`, `btn--${size}`, { "btn--plain": !icon }, className]} {...linkProps} {...rest}>
+  {icon && <span class="btn__cycle" aria-hidden="true"><Icon name={icon} /></span>}
   <span class="btn__label"><slot /></span>
 </Tag>
 
@@ -96,6 +97,8 @@ const linkProps = href
     }
     :global([dir="rtl"]) .btn:hover .btn__cycle { translate: 0.25em 0; rotate: 45deg; }
     :global([dir="rtl"]) .btn:hover .btn__label { translate: -0.25em 0; }
+    .btn--plain:hover .btn__label,
+    :global([dir="rtl"]) .btn--plain:hover .btn__label { translate: 0 -0.1em; }
   }
   .btn:active .btn__cycle,
   .btn:active .btn__label {
