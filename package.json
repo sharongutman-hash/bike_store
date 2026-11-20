@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "cutouts": "python3 scripts/make_cutouts.py content",
-    "import:pedalim": "node scripts/import-pedalim.mjs"
+    "import:pedalim": "node scripts/import-pedalim.mjs",
+    "export:pedalim": "node scripts/export-public.mjs pedalim"
   },
   "dependencies": {
     "@fontsource/amatic-sc": "5.3.0",

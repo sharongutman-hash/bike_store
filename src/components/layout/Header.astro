@@ -6,6 +6,8 @@
 import CircleButton from "../ui/CircleButton.astro";
 import Button from "../ui/Button.astro";
 import Icon from "../ui/Icon.astro";
+import { Image } from "astro:assets";
+import logo from "../../../content/images/site/logo.png";
 import { site, whatsappHref, path } from "../../lib/content";
 
 interface Props {
@@ -24,6 +26,9 @@ const nav = [
 <header class:list={["header", `header--${tone}`]} data-header>
   <div class="header__inner container">
     <div class="header__social" data-load-nav>
+      <a class="header__logo" href={path("/")}>
+        <Image src={logo} alt="אופני סלאלום פרדס חנה — דף הבית" width={96} densities={[1, 2]} loading="eager" />
+      </a>
       <CircleButton icon="facebook" label="סלאלום בפייסבוק" href={site.contact.facebook} external />
       <CircleButton icon="whatsapp" label="כתבו לנו בווטסאפ" href={whatsappHref()} external />
       <CircleButton icon="phone" label={`התקשרו ${site.contact.mobile}`} href={`tel:${site.contact.mobile.replaceAll("-", "")}`} />
@@ -42,9 +47,6 @@ const nav = [
         <span class="header__swatch" aria-hidden="true"></span>
         <span class="header__palette-label">ערכת צבע</span>
       </button>
-      <a class="header__logo" href={path("/")} aria-label="סלאלום פרדס חנה — דף הבית">
-        <span class="header__logo-text">סלאלום</span>
-      </a>
       <Button href={path("/shop/")} tone="ink" class="header__shop">לחנות</Button>
       <button class="header__menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
         <Icon name="menu" />
@@ -119,6 +121,7 @@ const nav = [
   }
   .header__social {
     display: flex;
+    align-items: center;
     gap: 0.375em;
   }
   .header--brand .header__social :global(.cbtn) { background: var(--color-ink-tint); }
@@ -182,13 +185,21 @@ const nav = [
   }
 
   .header__logo {
-    display: none;
-    font-family: var(--font-display);
-    font-weight: var(--weight-bold);
-    font-size: 2.25em;
-    line-height: 1;
-    min-height: var(--tap-min);
+    display: inline-flex;
     align-items: center;
+    margin-inline-end: 0.5em;
+    border-radius: var(--radius-s, 0.5em);
+  }
+  .header__logo img { display: block; width: 6em; height: auto; }
+  /* Orange plate on an orange header: sit it on a white chip so it stays legible. */
+  :root:not([data-palette="cream"]) .header--brand .header__logo {
+    padding: 0.3em 0.6em;
+    border-radius: var(--radius-l);
+    background: var(--color-surface);
+  }
+  .header__logo:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+  @media screen and (max-width: 479px) {
+    .header__logo img { width: 4.75em; }
   }
   .header__menu-btn {
     display: none;

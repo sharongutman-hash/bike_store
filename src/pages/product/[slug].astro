@@ -72,7 +72,7 @@ const jsonLd = {
   "@type": "Product",
   name: product.name,
   brand: product.brand ? { "@type": "Brand", name: product.brand } : undefined,
-  image: product.images.map((i) => i.src),
+  image: product.images.map((i) => i.src).filter(Boolean),
   description: teaser(product, 300),
   offers: product.price_on_request ? undefined : {
     "@type": "Offer",

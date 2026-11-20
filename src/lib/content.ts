@@ -23,7 +23,7 @@ export type Product = {
   tags_he: string[];
   specs: Record<string, string>;
   description_he: string;
-  images: { src: string; local: string; alt: string }[];
+  images: { src: string; local: string; alt: string; placeholder?: boolean }[];
   representing_category: { id: number; name_he: string; name_en: string; path_he: string[] };
   /** Which catalog the product came from: "slalom" (the original site) or an imported source. */
   source: string;
@@ -66,10 +66,20 @@ export const siteProducts: Product[] = (productsJson as unknown as Omit<Product,
   category_ids: p.categories_he.map((n) => taxonomyByName.get(n)?.id).filter((id): id is number => id !== undefined),
 }));
 
-/** Imported catalogs: content/sources/<name>/products.json, made by scripts/import-<name>.mjs.
- *  They are git-ignored; without them the site builds with the original products only. */
-const importedModules = import.meta.glob<{ default: Product[] }>("../../content/sources/*/products.json", { eager: true });
-const importedProducts = Object.values(importedModules).flatMap((m) => m.default);
+/** Imported catalogs, per source folder content/sources/<name>/:
+ *  - products.json        full data with photos (git-ignored, from scripts/import-<name>.mjs)
+ *  - catalog.public.json  no photos or descriptions (committed, from scripts/export-public.mjs)
+ *  The public preview (served from a sub-folder) always uses catalog.public.json;
+ *  a local build uses products.json when it exists. */
+const publicBuild = import.meta.env.BASE_URL !== "/";
+const fullModules = import.meta.glob<{ default: Product[] }>("../../content/sources/*/products.json", { eager: true });
+const publicModules = import.meta.glob<{ default: Product[] }>("../../content/sources/*/catalog.public.json", { eager: true });
+const sourceDirs = new Set([...Object.keys(fullModules), ...Object.keys(publicModules)].map((k) => k.replace(/[^/]+$/, "")));
+const importedProducts = [...sourceDirs].flatMap((dir) => {
+  const full = fullModules[`${dir}products.json`];
+  const pub = publicModules[`${dir}catalog.public.json`];
+  return ((publicBuild ? pub : full ?? pub)?.default ?? []);
+});
 
 /** Every product from every source: the shop and product pages use this. */
 export const products: Product[] = [...siteProducts, ...importedProducts];

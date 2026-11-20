@@ -28,15 +28,17 @@ The shop merges several catalogs into one category tree.
 | `content/sources/<name>/category-map.json` | How a source's categories map onto the tree: by category path first, then by words in the product name. |
 | `content/sources/<name>/products.json` | The imported products. Generated, git-ignored. |
 | `content/images/sources/<name>/` | Their photos, up to 3 per product, resized to 1200px webp. Generated, git-ignored. |
+| `content/sources/<name>/catalog.public.json` | The same products without photos or descriptions; every product shows `content/images/site/placeholder.webp`. Committed. The GitHub Pages preview always uses this file; a local build uses `products.json` when it exists. |
 
 To import or refresh pedalim.co.il, put `pedalim_catalog.zip` in the repo folder (git ignores zips), then:
 
 ```bash
 ditto -x -k pedalim_catalog.zip .cache/pedalim
 npm run import:pedalim
+npm run export:pedalim   # refresh the photo-free copy used by the GitHub Pages preview
 ```
 
-Without the generated files the site still builds, with the original products only. To add another source, add its `category-map.json` and an import script that writes the same product shape.
+Without the generated files the site still builds, from `catalog.public.json` (placeholder images). To add another source, add its `category-map.json` and an import script that writes the same product shape.
 
 ## Structure
 
