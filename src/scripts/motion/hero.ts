@@ -84,7 +84,7 @@ export function initHero() {
     .fromTo(eyebrow, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "<")
     .fromTo(bodySplit?.lines ?? [], { yPercent: 125 }, { yPercent: 0, duration: 0.5, stagger: stagger.words }, "<+=0.01")
     .set(body, { opacity: 1 }, "<")
-    .fromTo(featured, { opacity: 0, yPercent: 45 }, { opacity: 1, yPercent: 0, duration: 0.45 }, "<+=0.15")
+    .fromTo(featured ?? [], { opacity: 0, yPercent: 45 }, { opacity: 1, yPercent: 0, duration: 0.45 }, "<+=0.15")
     .call(() => lenis?.start(), undefined, "-=1");
 
   // Idle float — runs only while the hero is visible.

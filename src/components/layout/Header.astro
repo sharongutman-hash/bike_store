@@ -9,19 +9,19 @@
 import CircleButton from "../ui/CircleButton.astro";
 import Icon from "../ui/Icon.astro";
 import { site, whatsappHref, path } from "../../lib/content";
-import { mainNav } from "../../data/nav";
+import { headerNav } from "../../data/nav";
 
 interface Props {
   tone?: "brand" | "cream";
 }
 const { tone = "brand" } = Astro.props;
-const nav = mainNav;
+const nav = headerNav;
 ---
 <header class:list={["header", `header--${tone}`]} data-header>
   <div class="header__inner container">
     <div class="header__social" data-load-nav>
       <a class="header__logo" href={path("/")}>
-        <img src={path("/logo.svg")} alt="אופני סלאלום פרדס חנה — דף הבית" width="170" height="90" />
+        <img src={path("/logo.svg")} alt="אופני סלאלום פרדס חנה — דף הבית" width="250" height="100" />
       </a>
       <CircleButton icon="facebook" label="סלאלום בפייסבוק" href={site.contact.facebook} external />
       <CircleButton icon="whatsapp" label="כתבו לנו בווטסאפ" href={whatsappHref()} external />
@@ -135,8 +135,9 @@ const nav = mainNav;
     .header.is-stuck .header__link:hover { background: var(--color-ink); color: var(--color-surface); }
   }
 
-  /* Home page, before the bar takes over: logo and nav live in the hero. */
-  :global(body:has([data-hero-nav])) .header:not(.is-stuck) .header__logo,
+  /* Home page, before the bar takes over: logo and nav live in the hero.
+     The logo leaves the layout so the social buttons sit at the edge. */
+  :global(body:has([data-hero-nav])) .header:not(.is-stuck) .header__logo { display: none; }
   :global(body:has([data-hero-nav])) .header:not(.is-stuck) .header__nav {
     opacity: 0;
     visibility: hidden;
@@ -226,8 +227,8 @@ const nav = mainNav;
     margin-inline-end: 0.5em;
     border-radius: var(--radius-s, 0.5em);
   }
-  .header__logo img { display: block; width: 6em; height: auto; }
-  .header.is-stuck .header__logo img { width: 5em; }
+  .header__logo img { display: block; width: 7.5em; height: auto; }
+  .header.is-stuck .header__logo img { width: 7em; }
   /* Orange plate on an orange header: sit it on a white chip so it stays legible. */
   :root:not([data-palette="cream"]) .header--brand:not(.is-stuck) .header__logo {
     padding: 0.3em 0.6em;
@@ -236,7 +237,7 @@ const nav = mainNav;
   }
   .header__logo:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
   @media screen and (max-width: 479px) {
-    .header__logo img { width: 4.75em; }
+    .header__logo img { width: 6em; }
   }
   .header__menu-btn {
     display: none;

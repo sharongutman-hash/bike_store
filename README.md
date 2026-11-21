@@ -40,6 +40,14 @@ npm run export:pedalim   # refresh the photo-free copy used by the GitHub Pages 
 
 Without the generated files the site still builds, from `catalog.public.json` (placeholder images). To add another source, add its `category-map.json` and an import script that writes the same product shape.
 
+## Logo
+
+`public/logo.svg` is built from the store's high-quality logo (the Kfar Saba version, kept out of git at `.cache/logo/source.svg`): the trees are removed and "כפר סבא" becomes "פרדס חנה", drawn from the logo's own letter strokes.
+
+```bash
+python3 scripts/build-logo.py .cache/logo/source.svg public/logo.svg
+```
+
 ## Structure
 
 ```

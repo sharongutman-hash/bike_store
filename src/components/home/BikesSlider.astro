@@ -9,14 +9,15 @@ import CircleButton from "../ui/CircleButton.astro";
 import ProductImage from "../ui/ProductImage.astro";
 import Price from "../ui/Price.astro";
 import Scribble from "../ui/Scribble.astro";
-import { siteProducts as products, productHref, displayName, typePrefix } from "../../lib/content";
-import { bikes } from "../../data/copy";
+import { getProduct, productHref, displayName, typePrefix } from "../../lib/content";
+import { bikes, stage } from "../../data/copy";
 
-const items = products;
+// Five bikes only, one per type: full suspension, hardtail, electric, kids, city.
+const items = [1294, 1462, 1186, 1720, 1693].map(getProduct);
 ---
 <section class="bikes" aria-labelledby="bikes-title">
   <div class="bikes__head container">
-    <h2 id="bikes-title" class="display display-xl" data-highlight-text>{bikes.title}</h2>
+    <h2 id="bikes-title" class="display display-l" data-highlight-text>{bikes.title}</h2>
     <p class="bikes__sub h4 text-accent" data-reveal>{bikes.sub}</p>
     <Scribble text={bikes.note} arrow="down-end" class="bikes__note" />
   </div>
@@ -44,19 +45,30 @@ const items = products;
       <CircleButton icon="arrow-left" label="הבא" tone="light" data-slider-next />
     </div>
   </div>
+
+  <p class="bikes__outro display container">
+    {stage.title[0]} <span class="text-accent">{stage.title[1]}</span>
+  </p>
 </section>
 
 <style>
   .bikes {
     position: relative;
-    padding-block: 8em 6em;
+    padding-block: 3em 3em;
     overflow: clip;
   }
   .bikes__head {
     position: relative;
     text-align: center;
   }
-  .bikes__sub { margin-top: 0.4em; }
+  .bikes__sub { margin-top: 0.2em; }
+  /* Closing line under the gallery. */
+  .bikes__outro {
+    margin-top: 0.3em;
+    text-align: center;
+    font-size: var(--text-display-s);
+    line-height: 0.9;
+  }
   .bikes__note {
     position: absolute;
     inset-inline-start: var(--grid-margin);
@@ -64,7 +76,7 @@ const items = products;
   }
 
   /* ---------- Default (no JS): scroll-snap row ---------- */
-  .slider { margin-top: 3em; }
+  .slider { margin-top: 1.5em; }
   .slider__track {
     display: flex;
     gap: var(--grid-gutter);
@@ -91,7 +103,7 @@ const items = products;
     justify-content: center;
     align-items: center;
     gap: 1em;
-    margin-top: 2em;
+    margin-top: 1em;
   }
   .slider__status { min-width: 4ch; text-align: center; direction: ltr; }
 
@@ -137,11 +149,59 @@ const items = products;
   .slider.is-enhanced .slider__slide.is-peek { opacity: 0.35; }
   .slider.is-enhanced .slider__slide:not(.is-active) .slider__info { opacity: 0; }
   .slider.is-enhanced .slider__info { transition: opacity var(--duration-base) var(--ease-smooth); }
-  .slider.is-enhanced .slider__visual { display: block; width: 88%; margin-inline: auto; }
+  /* Every slide's picture gets the same height, taken from the screen height, so the
+     title, picture, details, arrows and closing line all fit on one screen (about 38em
+     is left for everything but the picture, top bar included). */
+  .slider.is-enhanced .slider__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88%;
+    height: clamp(10em, 100svh - 38em, 28em);
+    margin-inline: auto;
+  }
+  .slider.is-enhanced .slider__visual :global(.pimg) {
+    height: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .slider.is-enhanced .slider__visual :global(img) {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+  }
+  .slider.is-enhanced .slider__visual :global(.pimg--photo img) { height: 100%; }
+
+  /* Wide screens: the picture with its details beside it (details on the right in Hebrew),
+     so the section stays short and the picture can be bigger. */
+  @media screen and (min-width: 992px) {
+    .slider.is-enhanced .slider__slide {
+      width: min(100%, 64em);
+      grid-template-columns: 1fr 1.5fr;
+      grid-template-areas: "info visual";
+      align-items: center;
+      column-gap: 2em;
+    }
+    .slider.is-enhanced .slider__visual {
+      grid-area: visual;
+      width: 100%;
+      height: clamp(14em, 100svh - 27em, 30em);
+    }
+    .slider.is-enhanced .slider__info {
+      grid-area: info;
+      justify-items: start;
+      text-align: start;
+      gap: 0.75em;
+    }
+    .slider.is-enhanced .slider__name { font-size: calc(var(--text-h3) * 1.35); line-height: 0.9; }
+  }
 
   @media screen and (max-width: 767px) {
     .bikes__note { display: none; }
     .slider.is-enhanced .slider__track { touch-action: pan-y; }
+    /* Phones: the picture is limited by the width, so don't reserve more height than that. */
+    .slider.is-enhanced .slider__visual { height: clamp(10em, min(100svh - 23em, 70vw), 30em); }
     .slider.is-enhanced .slider__slide.is-prev { translate: -80% 15%; }
     .slider.is-enhanced .slider__slide.is-next { translate: 80% 15%; }
     :global([dir="rtl"]) .slider.is-enhanced .slider__slide.is-prev { translate: 80% 15%; }

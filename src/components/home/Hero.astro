@@ -17,7 +17,7 @@ const product = getProduct(1186);
 <section class="hero" data-hero aria-labelledby="hero-title">
   <div class="hero__top container">
     <h1 id="hero-title" class="hero__wordmark" data-hero-wordmark>
-      <img src={path("/logo.svg")} alt="" class="hero__logo" width="170" height="90" fetchpriority="high" />
+      <img src={path("/logo.svg")} alt="" class="hero__logo" width="250" height="100" fetchpriority="high" />
       <span class="sr-only">{site.business.name_he} — {site.business.tagline_he}</span>
     </h1>
     <nav class="hero__nav" aria-label="ניווט ראשי" data-hero-nav data-hero-cta>
@@ -48,6 +48,10 @@ const product = getProduct(1186);
           <ProductImage product={product} sizes="(max-width: 767px) 92vw, 48vw" widths={[480, 720, 960, 1200]} loading="eager" fetchpriority="high" />
         </a>
       </div>
+      <a class="hero__featured" href={productHref(product)}>
+        <span class="hero__featured-name">{displayName(product)}</span>
+        <Price product={product} />
+      </a>
     </div>
 
     <div class="hero__copy">
@@ -56,10 +60,6 @@ const product = getProduct(1186);
         {hero.title.map((line) => (<span class="hero__line">{line}</span>))}
       </h2>
       <p class="hero__body" data-hero-body>{hero.body}</p>
-      <a class="hero__featured" href={productHref(product)} data-hero-underline>
-        <span class="hero__featured-name">{displayName(product)}</span>
-        <Price product={product} />
-      </a>
     </div>
   </div>
 </section>
@@ -203,13 +203,44 @@ const product = getProduct(1186);
     font-size: var(--text-body);
     max-width: 30ch;
   }
+  /* Name and price of the bike in the ring: a label sitting on the ring's lower edge. */
   .hero__featured {
+    position: absolute;
+    z-index: 3;
+    bottom: 6%;
+    inset-inline: 0;
+    margin-inline: auto;
+    width: fit-content;
+    max-width: 90%;
     display: grid;
-    gap: 0.25em;
-    justify-self: start;
-    padding-block: 0.5em;
-    border-bottom: 2px solid currentColor;
+    gap: 0.2em;
+    justify-items: center;
+    text-align: center;
+    padding: 0.6em 1.25em 0.7em;
+    border-radius: var(--radius-l);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    transition: translate var(--duration-base) var(--ease-default), box-shadow var(--duration-base) var(--ease-smooth);
   }
+  /* With a mouse the label appears only while pointing at the bike (or tabbing to it).
+     Touch screens have no hover, so there it stays visible. */
+  @media (hover: hover) {
+    .hero__featured {
+      opacity: 0;
+      translate: 0 0.5em;
+      transition:
+        opacity var(--duration-base) var(--ease-smooth),
+        translate var(--duration-base) var(--ease-default),
+        box-shadow var(--duration-base) var(--ease-smooth);
+    }
+    .hero__visual:hover .hero__featured,
+    .hero__featured:focus-visible {
+      opacity: 1;
+      translate: 0 0;
+    }
+    .hero__featured:hover { box-shadow: var(--shadow-lift); }
+  }
+  .hero__featured:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
   .hero__featured-name { font-weight: var(--weight-bold); }
   .hero__featured :global(.price__was) { color: var(--color-ink); }
 

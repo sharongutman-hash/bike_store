@@ -4,6 +4,7 @@
  * - "placeholder" = written for the template; replace before launch.
  */
 import catalogJson from "../../content/catalog-index.json";
+import { products } from "../lib/content";
 
 type Entry<T> = T & { source: "site" | "placeholder" };
 
@@ -15,9 +16,10 @@ export const hero = {
   note: "הכל לאופניים\nבמקום אחד", // site tagline
 };
 
-/** Facts shown in the hero bubbles. Counts come from the scraped catalog. */
+/** Facts shown in the hero bubbles. The bike count is the new shop's; brands come from the scraped catalog. */
 const catalog = catalogJson as { brand: string | null; categories_he: string[] }[];
-const bikeCount = catalog.filter((p) => p.categories_he.includes("אופניים")).length;
+/** Bikes in the new site's shop (every source), i.e. the "אופניים" category (id 21). */
+const bikeCount = products.filter((p) => p.category_ids.includes(21)).length;
 const brandCount = new Set(catalog.map((p) => p.brand).filter(Boolean)).size;
 
 export const heroFacts: Entry<{ value: string; unit: string; label: string }>[] = [
