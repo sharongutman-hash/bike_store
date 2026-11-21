@@ -193,7 +193,7 @@ const subRows = departments
     .shop__panel {
       position: fixed;
       inset: auto 0 0;
-      z-index: calc(var(--z-header) + 2);
+      z-index: 1002; /* above the header and the preview banner (1000) */
       max-height: 85svh;
       overflow-y: auto;
       overscroll-behavior: contain;
@@ -248,7 +248,7 @@ const subRows = departments
     .shop__backdrop {
       position: fixed;
       inset: 0;
-      z-index: calc(var(--z-header) + 1);
+      z-index: 1001;
       display: block;
       background: rgb(26 20 16 / 0.45);
     }
