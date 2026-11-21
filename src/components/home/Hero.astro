@@ -55,11 +55,11 @@ const product = getProduct(1186);
     </div>
 
     <div class="hero__copy">
-      <p class="hero__eyebrow" data-hero-eyebrow>{hero.eyebrow}</p>
       <h2 class="hero__statement" data-hero-title>
         {hero.title.map((line) => (<span class="hero__line">{line}</span>))}
       </h2>
-      <p class="hero__body" data-hero-body>{hero.body}</p>
+      <p class="hero__eyebrow" data-hero-eyebrow>{hero.eyebrow}</p>
+      <p class="hero__body" data-hero-body>{hero.body.map((line, i) => (<>{i > 0 && <br />}{line}</>))}</p>
     </div>
   </div>
 </section>
@@ -201,7 +201,7 @@ const product = getProduct(1186);
   .hero__line { display: block; }
   .hero__body {
     font-size: var(--text-body);
-    max-width: 30ch;
+    max-width: 34ch;
   }
   /* Name and price of the bike in the ring: a label sitting on the ring's lower edge. */
   .hero__featured {

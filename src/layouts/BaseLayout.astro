@@ -19,14 +19,14 @@ const fullTitle = title ? `${title} | ${site.business.name_he}` : `${site.busine
 const preview = import.meta.env.BASE_URL !== "/";
 ---
 <!doctype html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" data-palette="cream">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {preview && <meta name="robots" content="noindex, nofollow" />}
-    <meta name="theme-color" content="#f77c14" />
+    <meta name="theme-color" content="#f2e6d6" />
     <link rel="icon" href={path("/favicon.svg")} type="image/svg+xml" />
     <!-- Motion gate: hide entrance states only when JS runs and motion is allowed.
          If the motion script has not started within 3s, show everything. -->
@@ -34,12 +34,13 @@ const preview = import.meta.env.BASE_URL !== "/";
       (function () {
         var d = document.documentElement;
         d.classList.add("js");
-        // Palette: ?palette=cream|orange wins, then the visitor's last choice.
+        // Palette: cream by default (set on <html>). ?palette=cream|orange wins,
+        // then the visitor's last choice.
         try {
           var q = new URLSearchParams(location.search).get("palette");
           var p = q || localStorage.getItem("palette");
           if (q) localStorage.setItem("palette", q);
-          if (p === "cream") d.dataset.palette = "cream";
+          if (p === "orange") delete d.dataset.palette;
         } catch (e) {}
         if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           d.classList.add("motion-ok");

@@ -149,7 +149,7 @@
 /* ---------- Palette: cream ----------
    Same brand, less orange: large surfaces become cream and sand, and orange is
    kept for accents (buttons, wave band, stars, prices, highlights).
-   Set with <html data-palette="cream">; the header switch toggles it. */
+   The default: BaseLayout sets <html data-palette="cream">; the header switch toggles it. */
 :root[data-palette="cream"] {
   --color-bg: #fbf7f1;
   --surface-bold: #f2e6d6;
