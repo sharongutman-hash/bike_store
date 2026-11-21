@@ -86,18 +86,17 @@ const product = getProduct(1186);
     font-size: var(--text-wordmark);
     line-height: 0.72;
     letter-spacing: -0.015em;
-    margin-top: 0.08em;
   }
-  /* Same height as the old "סלאלום" wordmark: the h1 font-size is the wordmark size. */
+  /* Same height as the old "סלאלום" wordmark (the h1 font-size is the wordmark size),
+     but never more than about a fifth of the screen, so the bike shows on the first screen. */
   .hero__logo {
     display: block;
-    height: 0.75em;
+    height: min(0.75em, 22vh);
     width: auto;
     max-width: 88vw;
-    margin-top: 0.5em;
   }
   /* The site nav, under the logo. The header bar takes it over on scroll. */
-  .hero__nav { margin-top: 1.5em; }
+  .hero__nav { margin-top: 1.25em; }
   .hero__nav ul {
     display: flex;
     flex-wrap: wrap;
