@@ -3,10 +3,13 @@
  * Shop. Lists every product from every source (lib/content.ts), filtered by department and
  * sub-category and shown PAGE_SIZE at a time with a "show more" button.
  * Filters + sort are progressive: without JS every product shows and the controls stay hidden.
+ * Narrow screens: the category chips move into a panel that slides up from the bottom,
+ * opened by the "סינון" button next to the sort.
  */
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProductCard from "../../components/shop/ProductCard.astro";
 import Scribble from "../../components/ui/Scribble.astro";
+import Icon from "../../components/ui/Icon.astro";
 import { products, categories } from "../../lib/content";
 
 const PAGE_SIZE = 24;
@@ -29,6 +32,15 @@ const subRows = departments
 
   <section class="shop container" data-shop data-page-size={PAGE_SIZE} aria-label="מוצרים">
     <div class="shop__controls" data-shop-controls hidden>
+      <div class="shop__backdrop" data-filter-close hidden></div>
+      <div class="shop__panel" id="shop-filters" role="group" aria-label="סינון" data-filter-panel>
+      <div class="shop__panel-head">
+        <p class="h4">סינון</p>
+        <button type="button" class="shop__panel-x" data-filter-close>
+          <Icon name="close" />
+          <span class="sr-only">סגירת הסינון</span>
+        </button>
+      </div>
       <div class="shop__filters" role="group" aria-label="סינון לפי מחלקה">
         <button type="button" class="chip" data-filter="all" aria-pressed="true">הכל <span>{products.length}</span></button>
         {departments.map((d) => (
@@ -42,8 +54,17 @@ const subRows = departments
           ))}
         </div>
       ))}
+      <button type="button" class="shop__panel-done" data-filter-close>
+        להציג <span data-shop-count-btn>{products.length} מוצרים</span>
+      </button>
+      </div>
       <div class="shop__meta">
-        <p class="small" data-shop-count aria-live="polite">{products.length} מוצרים</p>
+        <button type="button" class="shop__filter-btn" aria-expanded="false" aria-controls="shop-filters" data-filter-open>
+          <Icon name="filter" />
+          <span>סינון</span>
+          <span class="shop__filter-current" data-filter-current></span>
+        </button>
+        <p class="small shop__count" data-shop-count aria-live="polite">{products.length} מוצרים</p>
         <label class="shop__sort small">
           <span>מיון</span>
           <select data-sort>
@@ -131,6 +152,111 @@ const subRows = departments
   }
   .btn-more:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
   .shop__empty { text-align: center; padding-block: 3em; }
+
+  /* Filter panel: inline on wide screens; the button, header, backdrop and
+     "show" button only exist on narrow screens. */
+  .shop__panel { display: grid; gap: 1.25em; }
+  .shop__panel-head,
+  .shop__panel-done,
+  .shop__filter-btn,
+  .shop__backdrop { display: none; }
+  @media screen and (max-width: 767px) {
+    .shop__controls { margin-bottom: 1.5em; }
+    .shop__meta { flex-wrap: wrap; row-gap: 0.75em; }
+    .shop__count { order: 3; flex-basis: 100%; }
+    /* "מיון" stays for screen readers; the select says what it is. */
+    .shop__sort > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .shop__filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      min-height: var(--tap-min);
+      flex: 0 1 auto;
+      min-width: 0;
+      padding: 0.2em 1.1em 0.3em 0.9em;
+      border-radius: var(--radius-pill);
+      background: var(--color-ink);
+      color: var(--color-surface);
+      font-weight: var(--weight-medium);
+    }
+    .shop__filter-btn :global(.icon) { width: 1.1em; height: 1.1em; flex: none; }
+    .shop__filter-current {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: var(--weight-regular, 400);
+      opacity: 0.75;
+    }
+    .shop__filter-current:not(:empty)::before { content: "· "; }
+    .shop__filter-btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+
+    .shop__panel {
+      position: fixed;
+      inset: auto 0 0;
+      z-index: calc(var(--z-header) + 2);
+      max-height: 85svh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      align-content: start;
+      padding: 0 var(--grid-margin) 1.25em;
+      border-radius: var(--radius-l) var(--radius-l) 0 0;
+      background: var(--color-bg);
+      box-shadow: var(--shadow-lift);
+      translate: 0 105%;
+      visibility: hidden;
+      transition:
+        translate var(--duration-base) var(--ease-smooth),
+        visibility 0s var(--duration-base);
+    }
+    .shop__panel.is-open {
+      translate: 0 0;
+      visibility: visible;
+      transition: translate var(--duration-base) var(--ease-smooth);
+    }
+    .shop__panel-head {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block: 1em 0.5em;
+      background: var(--color-bg);
+    }
+    .shop__panel-x {
+      display: inline-grid;
+      place-items: center;
+      width: var(--tap-min);
+      height: var(--tap-min);
+      border-radius: var(--radius-round);
+      background: var(--color-surface);
+    }
+    .shop__panel-x :global(.icon) { width: 1.25em; height: 1.25em; }
+    .shop__panel-done {
+      position: sticky;
+      bottom: 0;
+      display: block;
+      width: 100%;
+      min-height: 3em;
+      margin-top: 0.5em;
+      border-radius: var(--radius-pill);
+      background: var(--color-ink);
+      color: var(--color-surface);
+      font-weight: var(--weight-medium);
+      box-shadow: 0 -0.75em 1em var(--color-bg);
+    }
+    .shop__backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: calc(var(--z-header) + 1);
+      display: block;
+      background: rgb(26 20 16 / 0.45);
+    }
+    .shop__backdrop[hidden] { display: none; }
+    /* Inside the panel the chips wrap instead of scrolling sideways. */
+    .shop__panel .shop__filters { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; }
+    .shop__panel .shop__filters--sub { padding-inline-start: 0.75em; }
+  }
   @media screen and (max-width: 991px) {
     .shop__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
@@ -139,7 +265,5 @@ const subRows = departments
     .shop-hero__note { display: none; }
     .shop { padding-top: 2em; }
     .shop__grid { grid-template-columns: 1fr; }
-    .shop__filters { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--grid-margin)); padding-inline: var(--grid-margin); padding-bottom: 0.25em; }
-    .chip { flex: none; }
   }
 </style>

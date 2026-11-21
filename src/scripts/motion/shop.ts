@@ -5,6 +5,9 @@
  * adds the next page. Layout changes animate with
  * GSAP Flip (0.6s smooth, items entering pop with the elastic ease).
  * Without JS every product is listed and the filter bar stays hidden.
+ * Narrow screens: the chips sit in a bottom panel opened by the "סינון" button (CSS
+ * decides when it's a panel); the button shows the active category, and the panel's
+ * "show" button shows the number of matches.
  */
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
@@ -24,6 +27,11 @@ export function initShop() {
   const subRows = [...root.querySelectorAll<HTMLElement>("[data-sub-for]")];
   const more = root.querySelector<HTMLElement>("[data-shop-more]");
   const moreBtn = root.querySelector<HTMLButtonElement>("[data-shop-more-btn]");
+  const countBtn = root.querySelector<HTMLElement>("[data-shop-count-btn]");
+  const current = root.querySelector<HTMLElement>("[data-filter-current]");
+  const panel = root.querySelector<HTMLElement>("[data-filter-panel]");
+  const opener = root.querySelector<HTMLButtonElement>("[data-filter-open]");
+  const backdrop = root.querySelector<HTMLElement>(".shop__backdrop");
   const pageSize = Number(root.dataset.pageSize) || 24;
   let limit = pageSize;
   root.querySelector("[data-shop-controls]")?.removeAttribute("hidden");
@@ -62,6 +70,8 @@ export function initShop() {
     });
 
     if (count) count.textContent = `${matches.length} מוצרים`;
+    if (countBtn) countBtn.textContent = `${matches.length} מוצרים`;
+    if (current) current.textContent = cat === "all" ? "" : (active?.firstChild?.textContent ?? "").trim();
     if (empty) empty.hidden = matches.length > 0;
     if (more) more.hidden = matches.length <= limit;
     if (moreBtn) moreBtn.textContent = `להציג עוד (${Math.min(pageSize, matches.length - limit)} מתוך ${matches.length - limit} שנותרו)`;
@@ -107,5 +117,30 @@ export function initShop() {
       gsap.fromTo(added, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: duration.base, ease: ease.smooth, stagger: 0.02 });
     }
   });
+  // Narrow-screen panel.
+  const setOpen = (open: boolean) => {
+    if (!panel || !opener) return;
+    panel.classList.toggle("is-open", open);
+    if (backdrop) backdrop.hidden = !open;
+    opener.setAttribute("aria-expanded", String(open));
+    document.documentElement.classList.toggle("menu-open", open);
+    open ? window.__lenis?.stop() : window.__lenis?.start();
+    if (open) panel.querySelector<HTMLElement>(".shop__panel-x")?.focus();
+    else opener.focus({ preventScroll: true });
+  };
+  opener?.addEventListener("click", () => setOpen(true));
+  root.querySelectorAll("[data-filter-close]").forEach((el) => el.addEventListener("click", () => {
+    setOpen(false);
+    // Back to the top of the results, just under the fixed header.
+    if (el.classList.contains("shop__panel-done")) {
+      const header = document.querySelector<HTMLElement>("[data-header]")?.offsetHeight ?? 0;
+      const top = root.getBoundingClientRect().top + window.scrollY - header - 8;
+      window.__lenis ? window.__lenis.scrollTo(top, { immediate: !motionOK() }) : window.scrollTo({ top, behavior: motionOK() ? "smooth" : "auto" });
+    }
+  }));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && panel?.classList.contains("is-open")) setOpen(false);
+  });
+
   apply(false);
 }
